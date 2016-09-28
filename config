@@ -265,7 +265,7 @@ client.background       #000000
 # startup configurations
 exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/wallpapers/215145dg4oim8ocmmge4is.png
 
-exec --no-startup-id xrandr --output VIRTUAL1 --off --output DP1 --off --output HDMI1 --off --output VGA-1-2 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --out    put VGA1 --off
+exec --no-startup-id xrandr --output VIRTUAL1 --off --output DP1 --off --output HDMI1 --off --output VGA-1-2 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off
 
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
