@@ -117,8 +117,8 @@ set $ws2 2:
 set $ws3 3:
 set $ws4 4:
 set $ws5 5:
-set $ws6 6:
-set $ws7 7:
+set $ws6 6:
+set $ws7 7:
 set $ws8 8:
 set $ws9 9:
 
@@ -199,40 +199,37 @@ mode "$power_management" {
 }
 
 # debian-bright colors by j4 tools
-# color_bad = "#D70A53"
-# color_good = "#75DD0A"
-# color_degraded = "#F6B70B"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status --config /home/jade/.config/i3/i3status.conf
-        strip_workspace_numbers yes
-        tray_output primary
-
-        colors {
-            background  #2B2C2B
-            statusline  #F9FAF9
-            separator   #454947
+#bar {
+#        status_command i3status --config /home/jade/.config/i3/i3status.conf
+#        strip_workspace_numbers yes
+#        tray_output primary
+#
+#        colors {
+#            background  #2B2C2B
+#            statusline  #F9FAF9
+#            separator   #454947
 
 #                               border  backgr. text
-            focused_workspace   #da2263 #d70a53 #ffffff
-            active_workspace    #565656 #444444 #ffffff
-            inactive_workspace  #373737 #222222 #888888
-            urgent_workspace    #ec7ea4 #eb709b #ffffff
-        }
-}
+#            focused_workspace   #da2263 #d70a53 #ffffff
+#            active_workspace    #565656 #444444 #ffffff
+#            inactive_workspace  #373737 #222222 #888888
+#            urgent_workspace    #ec7ea4 #eb709b #ffffff
+#        }
+#}
 
 # Theme colors
 # class                 border  backgr. text    indic.  child_border
-client.focused          #da2263 #d70a53 #ffffff #eb709b
-client.focused_inactive #565656 #444444 #ffffff #666666
-client.unfocused        #373737 #222222 #888888 #444444
-client.urgent           #ec7ea4 #eb709b #ffffff #eb709b
+# client.focused          #da2263 #d70a53 #ffffff #eb709b
+# client.focused_inactive #565656 #444444 #ffffff #666666
+# client.unfocused        #373737 #222222 #888888 #444444
+# client.urgent           #ec7ea4 #eb709b #ffffff #eb709b
 # client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
 
-client.background       #000000
-
+# client.background       #000000
+# end debian-bright colors
 
 # $i3-theme-window greenish
 # # class                 border  backgr. text    indicator
@@ -251,6 +248,72 @@ client.background       #000000
 #                           urgent_workspace   #2f343a #900000 #ffffff
 #                           }
 # end i3 theme greenish
+
+# $i3-window-theme tango-jungle
+# tango dark
+set $darkblue         #204A87
+set $darkbrown        #8F5902
+set $darkgreen        #4E9A06
+set $darkmagenta  #5C3566
+set $darkred      #A40000
+set $darkyellow   #C4A000
+set $darkorange       #CE5C00
+
+# tango light
+set $lightblue        #729FCF
+set $lightbrown       #E9B96E
+set $lightgreen   #8AE234
+set $lightmagenta     #AD7FA8
+set $lightred         #EF2929
+set $lightyellow  #FCE94F
+set $lightorange  #FCAF3E
+#
+# tango normal
+set $blue             #3465A4
+set $brown            #C17D11
+set $green            #73D216
+set $magenta      #75507B
+set $red          #CC0000
+set $yellow       #EDD400
+set $orange           #F57900
+
+# tango mono
+set $black            #555753
+set $grey         #BABDB6
+set $white            #EEEEEC
+set $darkblack        #2E3436
+set $darkgrey         #888A85
+set $darkwhite        #D3D7CF
+
+# # $i3-background
+exec_always --no-startup-id xsetroot -solid '#2E3436'
+
+# tango jungle <clientclass> <border> <backg> <text> <indicator>
+client.focused          $green $darkgreen $white $lightgreen
+client.focused_inactive $darkgrey $black $grey $darkgrey
+client.unfocused        $black $darkblack $grey $darkgrey
+client.urgent           $yellow $darkyellow $white $lightyellow
+
+bar {
+        status_command i3status --config /home/jade/.config/i3/i3status.conf
+        strip_workspace_numbers yes
+        tray_output primary
+
+        colors {
+            # tango jungle <workclass> <border> <backg> <text>
+            background #222222
+            separator  #444444
+            statusline  #F9FAF9
+
+            focused_workspace   $green $darkgreen $white
+            active_workspace    $brown $darkbrown $grey
+            inactive_workspace  $black $darkblack $grey
+            urgent_workspace    $yellow $darkyellow $white
+        }
+}
+
+
+
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)
@@ -265,7 +328,7 @@ client.background       #000000
 # startup configurations
 exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/wallpapers/215145dg4oim8ocmmge4is.png
 
-exec --no-startup-id xrandr --output VIRTUAL1 --off --output DP1 --off --output HDMI1 --off --output VGA-1-2 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off
+exec_always xrandr --output VIRTUAL1 --off --output DP1 --off --output HDMI1 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output VGA-1-2 --off 
 
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
