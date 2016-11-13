@@ -11,7 +11,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Monaco 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -116,8 +116,8 @@ set $ws1 1:
 set $ws2 2:
 set $ws3 3:
 set $ws4 4:
-set $ws5 5:
-set $ws6 6:
+set $ws5 5:
+set $ws6 6:
 set $ws7 7:
 set $ws8 8:
 set $ws9 9:
@@ -145,6 +145,13 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 
+
+# assign to workspace
+assign [class="Gnome-terminal"] → $ws1
+assign [class="Firefox"] → $ws2
+assign [class="Pcmanfm"] → $ws6
+assign [class="jetbrains-idea"] → $ws5
+assign [class="VirtualBox"] → $ws8
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -295,7 +302,8 @@ client.unfocused        $black $darkblack $grey $darkgrey
 client.urgent           $yellow $darkyellow $white $lightyellow
 
 bar {
-        status_command i3status --config /home/jade/.config/i3/i3status.conf
+        status_command i3blocks -c /home/jade/.config/i3/i3blocks.conf
+        #status_command i3status --config /home/jade/.config/i3/i3status.conf
         strip_workspace_numbers yes
         tray_output primary
 
@@ -326,7 +334,7 @@ bar {
 # exec i3-config-wizardi
 
 # startup configurations
-exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/wallpapers/215145dg4oim8ocmmge4is.png
+exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/wallpapers/1fca7959252dd42a78332e2b0b3b5bb5c8eab85c.jpg
 
 exec_always xrandr --output VIRTUAL1 --off --output DP1 --off --output HDMI1 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output VGA-1-2 --off 
 
