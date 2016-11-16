@@ -150,7 +150,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 assign [class="Gnome-terminal"] → $ws1
 assign [class="Firefox"] → $ws2
 assign [class="Pcmanfm"] → $ws6
-assign [class="jetbrains-idea"] → $ws5
+# assign [class="jetbrains-idea"] → $ws5
 assign [class="VirtualBox"] → $ws8
 # reload the configuration file
 bindsym $mod+Shift+c reload

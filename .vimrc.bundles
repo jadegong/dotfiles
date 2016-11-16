@@ -1,0 +1,34 @@
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" config vim-go
+Plugin 'fatih/vim-go'
+" config YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+" config UltiSnips
+Plugin 'SirVer/ultisnips'
+" config Powerline status
+Plugin 'Lokaltog/vim-powerline'
+" config NERDtree
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs' "show NERDTree 1n all tabs
+Plugin 'Xuyuanp/nerdtree-git-plugin' "show git infos in NERDTree
+" config autoclose
+Plugin 'Townk/vim-autoclose'
+" tagbar
+Plugin 'majutsushi/tagbar'
+" piv: php
+Plugin 'spf13/PIV'
+" neodark scheme
+Plugin 'KeitaNakamura/neodark.vim'
+" vim-snippets
+Plugin 'honza/vim-snippets'
+call vundle#end()
+
+filetype on
+
+
