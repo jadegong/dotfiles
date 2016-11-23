@@ -3,15 +3,15 @@ let mapleader=";"
 " 配置文件.vimrc更改后自动重新载入使设置生效
 " autocmd! bufwritepost .vimrc source ~/.vimrc 
 " 设置重新载入.vimrc快捷键
-map <silent> <leader>ss :source ~/.vimrc<CR>
+map <silent> <leader>ss :source ~/.gvimrc<CR>
 " 设置快速编辑.vimrc快捷键
-map <silent> <leader>ee :e ~/.vimrc<cr>
+map <silent> <leader>ee :e ~/.gvimrc<cr>
 " end config
 
 set nocompatible	"be improved, required
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.gvimrc.bundles"))
+  source ~/.gvimrc.bundles
 endif
 
 " gvim config
@@ -22,13 +22,14 @@ if has("gui_running")
   set guioptions-=e
   set guioptions-=r
   set guioptions-=b
+  " set guitablabel=%N:%M%t
   " set showtabline=0
 endif
 
 filetype plugin indent on	" required
 syntax enable
 syntax on
-set laststatus=2
+" set laststatus=2
 set ruler
 set cmdheight=1
 
@@ -86,6 +87,10 @@ vnoremap <silent><leader>p "+p
 " set  molokai color scheme
 " let g:molokai_original = 1
 " let g:rehash256 = 1
+set t_Co=256
+let g:neodark#background='gray'
+let g:neodark#user_256color=1
+colorscheme neodark
 
 let g:Powerline_symbols = 'fancy'
 
@@ -109,8 +114,8 @@ map <F2> :NERDTreeTabsToggle<CR>
 " 关闭vim时，如果没有打开的文件，关闭NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Change the arrow
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 "NERDTree git symbol
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -128,16 +133,16 @@ let g:NERDTreeIndicatorMapCustom = {
 nnoremap <M-Left> :tabprevious<CR>
 nnoremap <M-Right> :tabnext<CR>
 
-nnoremap <C-1> 1gt
-nnoremap <C-2> 2gt
-nnoremap <C-3> 3gt
-nnoremap <C-4> 4gt
-nnoremap <C-5> 5gt
-nnoremap <C-6> 6gt
-nnoremap <C-7> 7gt
-nnoremap <C-8> 8gt
-nnoremap <C-9> 9gt
-nnoremap <C-0> :tablast<CR>
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+nnoremap <M-0> :tablast<CR>
 
 " YCM settings
 " 通过下箭头选择下一个提示，上箭头同样，Ctrl+Space触发提示
