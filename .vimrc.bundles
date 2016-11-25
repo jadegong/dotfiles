@@ -8,8 +8,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " config vim-go
 Plugin 'fatih/vim-go'
-" config YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" config neocomplete
+Plugin 'Shougo/neocomplete.vim'
 " config UltiSnips
 Plugin 'SirVer/ultisnips'
 " config Powerline status
