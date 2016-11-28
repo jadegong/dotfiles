@@ -1,0 +1,10 @@
+﻿" gvim config
+if has("gui_running")
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=L
+  set guioptions-=e
+  set guioptions-=r
+  set guioptions-=b
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+endif
