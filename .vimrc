@@ -20,14 +20,43 @@ syntax on
 set laststatus=2
 set ruler
 set cmdheight=1
-
+set showtabline=1
+set tabline=%!MyTabLine()
+" show tabline function
+function MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+    let s .= '%' . (i + 1) . 'T'
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+  let s .= '%#TabLineFill#%T'
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999Xclose'
+  endif
+  return s
+endfunction
+" each tab label function
+function MyTabLabel(n)
+  let l = ''
+  let l .= a:n . ':'
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let l .= bufname(buflist[winnr - 1])
+  return l
+endfunction
 set nu
 set cursorline
 set hlsearch
 set incsearch
 " 设置禁止光标闪烁
 set gcr+=a:blinkon0
-
+" set swapfile dir
+set directory=/tmp
 
 " 设置编码
 set encoding=utf-8
@@ -35,6 +64,7 @@ set fileencodings=utf-8,gbk,default,latin1
 
 " 设置缩进
 set cindent
+set smartindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -73,6 +103,25 @@ vnoremap <silent><leader>y "+y
 nnoremap <silent><leader>p "+p
 vnoremap <silent><leader>p "+p
 
+" 标签页快捷键
+nnoremap <M-Left> :tabprevious<CR>
+nnoremap <M-Right> :tabnext<CR>
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+nnoremap <M-0> :tablast<CR>
+
+
+" config auto-pairs
+"let g:AutoPairsFlyMode = 1
+
+
 " set  molokai color scheme
 " let g:molokai_original = 1
 " let g:rehash256 = 1
@@ -81,7 +130,10 @@ let g:neodark#background='gray'
 let g:neodark#user_256color=1
 colorscheme neodark
 
+" config statusline
 let g:Powerline_symbols = 'fancy'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme=''
 
 " config vim-syntastic
 set statusline+=%#warningmsg#
@@ -101,16 +153,18 @@ let g:syntastic_warning_symbol = '⚠️'
 let g:syntastic_style_warning_symbol = '💩'
 " end vim-syntastic
 
+
 "tagbar config
 map <F3> :TagbarToggle<CR>
+
 
 "NERDTree config
 map <F2> :NERDTreeTabsToggle<CR>
 " 关闭vim时，如果没有打开的文件，关闭NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Change the arrow
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 "NERDTree git symbol
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -124,27 +178,12 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-" 标签页快捷键
-nnoremap <M-Left> :tabprevious<CR>
-nnoremap <M-Right> :tabnext<CR>
-
-nnoremap <M-1> 1gt
-nnoremap <M-2> 2gt
-nnoremap <M-3> 3gt
-nnoremap <M-4> 4gt
-nnoremap <M-5> 5gt
-nnoremap <M-6> 6gt
-nnoremap <M-7> 7gt
-nnoremap <M-8> 8gt
-nnoremap <M-9> 9gt
-nnoremap <M-0> :tablast<CR>
-
 " YCM settings
 " 通过下箭头选择下一个提示，上箭头同样，Ctrl+Space触发提示
 "let g:ycm_key_list_select_completion=['<Down>']
 "let g:ycm_key_list_previous_completion=['<Up>']
 "let g:ycm_key_invoke_completion='<C-Space>'
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"  "回车即选中当前项
+"inoremap <expr> <CR> pumvisible() ? \"\<C-y>" : \"\<CR>"  "回车即选中当前项
 "nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " 菜单
 " highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5

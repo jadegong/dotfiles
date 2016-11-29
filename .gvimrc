@@ -6,7 +6,7 @@ if has("gui_running")
   set guioptions-=e
   set guioptions-=r
   set guioptions-=b
-  " set guitablabel=%N:%M%t
+  " set guitablabel=%N: %f
   " set showtabline=0
   set guifont=Monaco\ for\ Powerline\ 10
 endif

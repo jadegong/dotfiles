@@ -14,6 +14,9 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'SirVer/ultisnips'
 " config Powerline status
 Plugin 'Lokaltog/vim-powerline'
+" config airline instead to display status line
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 " config NERDtree
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs' "show NERDTree 1n all tabs
@@ -21,7 +24,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin' "show git infos in NERDTree
 " config autoclose ps:conflict with YouCompleteMe
 " Plugin 'Townk/vim-autoclose'
 " config delimitMate
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
+" config auto-pairs
+Plugin 'jiangmiao/auto-pairs'
 " tagbar
 Plugin 'majutsushi/tagbar'
 " piv: php
