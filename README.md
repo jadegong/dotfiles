@@ -9,4 +9,4 @@ Linux config files
 - blurlock -> i3lock shell to exec when press Mod+l;(in /usr/local/bin/)
 - .i3status.conf/.i3block.conf -> i3status/i3blocks config file.(Mine is in ~/.config/i3/)   
 At last, I'd like to show my screencast after I've done all the configurations.   
-![](http://7xnyb9.com1.z0.glb.clouddn.com/screenfetch.png)
+![](http://7xnyb9.com1.z0.glb.clouddn.com/screenFetch-2016-11-29_11-56-16.png)
