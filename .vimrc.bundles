@@ -9,14 +9,16 @@ Plugin 'gmarik/Vundle.vim'
 " config vim-go
 Plugin 'fatih/vim-go'
 " config neocomplete
-Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplete.vim'
+" config YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
 " config UltiSnips
 Plugin 'SirVer/ultisnips'
 " config Powerline status
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
 " config airline instead to display status line
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " config NERDtree
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs' "show NERDTree 1n all tabs
@@ -44,4 +46,3 @@ Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 
 filetype on
-

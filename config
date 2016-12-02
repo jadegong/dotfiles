@@ -186,7 +186,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock configuration
-bindsym $mod+l exec --no-startup-id blurlock
+bindsym $mod+l exec --no-startup-id dm-tool lock
 
 # power management mode
 set $power_management System: [S]hutdown   [r]eboot   [l]ockscreen   [h]ibernate    [s]uspend  switch_[u]ser  [e]xit
@@ -194,7 +194,7 @@ bindsym $mod+0 mode "$power_management"
 mode "$power_management" {
     bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym l exec --no-startup-id blurlock, mode "default"
+    bindsym l exec --no-startup-id dm-tool lock, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym u exec --no-startup-id dm-tool switch-to-greeter, mode "default"
@@ -334,12 +334,12 @@ bar {
 # exec i3-config-wizardi
 
 # startup configurations
-exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/wallpapers/1fca7959252dd42a78332e2b0b3b5bb5c8eab85c.jpg
+exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/wallpapers/ui2jINl.jpg
 
-exec_always xrandr --output VIRTUAL1 --off --output DP1 --off --output HDMI1 --off --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output VGA-1-2 --off 
+exec_always xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal
 
+exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-power-manager
 exec_always compton -f
-
