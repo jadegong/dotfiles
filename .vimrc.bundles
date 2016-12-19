@@ -8,14 +8,20 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " config vim-go
 Plugin 'fatih/vim-go'
+Plugin 'buoto/gotests-vim' " vim gotests
 " config neocomplete
 "Plugin 'Shougo/neocomplete.vim'
 " config YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " config UltiSnips
 Plugin 'SirVer/ultisnips'
-" config Powerline status
-"Plugin 'Lokaltog/vim-powerline'
+
+" js plugins
+" jsbeautify
+Plugin 'maksimr/vim-jsbeautify'
+" improved indentation and syntax for js files
+Plugin 'pangloss/vim-javascript'
+
 " config airline instead to display status line
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -23,10 +29,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs' "show NERDTree 1n all tabs
 Plugin 'Xuyuanp/nerdtree-git-plugin' "show git infos in NERDTree
-" config autoclose ps:conflict with YouCompleteMe
-" Plugin 'Townk/vim-autoclose'
-" config delimitMate
-"Plugin 'Raimondi/delimitMate'
+" Config vim gitgutter
+Plugin 'airblade/vim-gitgutter'
+" Config minimap
+Plugin 'severin-lemaignan/vim-minimap'
 " config auto-pairs
 Plugin 'jiangmiao/auto-pairs'
 " tagbar

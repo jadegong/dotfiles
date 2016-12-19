@@ -45,6 +45,10 @@ function MyTabLabel(n)
   return l
 endfunction
 set nu
+set relativenumber
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+set scrolloff=15
 set cursorline
 set hlsearch
 set incsearch
@@ -113,9 +117,32 @@ nnoremap <M-9> 9gt
 nnoremap <M-0> :tablast<CR>
 
 
-" config auto-pairs
-"let g:AutoPairsFlyMode = 1
+" config vim updatetime
+set updatetime=250
 
+" config vim minimap
+let g:minimap_toggle='<F4>' "F4 toggle minimap
+
+" config js files
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+" config jsbeautify
+"map <C-M-f> :call JsBeautify()<CR>
+autocmd FileType javascript noremap <buffer>  <C-M-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <C-M-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <C-M-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <C-M-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <C-M-f> :call CSSBeautify()<cr>
+" visual mode
+autocmd FileType javascript vnoremap <buffer>  <C-M-f> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <C-M-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <C-M-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <C-M-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <C-M-f> :call RangeCSSBeautify()<cr>
 
 " set  molokai color scheme
 " let g:molokai_original = 1
@@ -128,6 +155,10 @@ colorscheme neodark
 " config statusline
 "let g:Powerline_symbols = 'fancy'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#exclude_preview = 0
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_theme='dark'
 let g:airline_powerline_fonts=1
 
@@ -143,10 +174,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_go_checkers = ['gofmt','gometalinter','gotype', 'govet']
 
-let g:syntastic_error_symbol = '❌'
+let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_warning_symbol = '≈'
 " end vim-syntastic
 
 
@@ -257,3 +288,5 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" vim-gotests

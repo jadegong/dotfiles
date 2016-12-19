@@ -1,0 +1,57 @@
+ping -c www.baidu.com
+ping -c 3 www.baidu.com
+sudo systemctl enable lightdm.service
+sudo pacman -S networkmanager
+sudo systemctl enable NetworkManager.service
+sudo systemctl start NetworkManager.service
+sudo pacman -S network-manager-applet xfce4-notifyd
+ping -c 3 www.baidu.com
+wifi-menu
+sudo wifi-menu
+sudo systemctl status netctl@wlp3s0\\x2ddj5.service
+sudo systemctl stop NetworkManager.service
+sudo wifi-menu
+ping -c 3 www.baidu.com
+sudo pacman -S network-manager-applet sfce4-notifyd
+sudo pacman -S network-manager-applet xfce4-notifyd
+nm-applet
+sudo systemctl enable NetworkManager.service
+sudo systemctl statusNetworkManager.service
+sudo systemctl status NetworkManager.service
+systemctl --type=service
+sudo systemctl stop netctl@wlp3s0\\x2ddj5.service
+ping -c www.baidu.com
+ping -c 3 www.baidu.com
+systemctl start NetworkManager.service
+nm-applet
+ll /etc/xdg/autostart/
+l~sl /etc/xdg/autostart/
+ls /etc/xdg/autostart/
+exit
+reboot
+ping -c 3 www.baidu.com
+systemctl status NetworkManager.service
+sudo pacman -Syu
+sudo pacman -S firefox
+whereis firefox
+sudo pacman -S wqy-microhei
+sudo vim /etc/pacman.conf
+pcman -Syy
+pacman -Syy
+sudo pacman -Syy
+sudo pacman -S archlinucn-keyring
+sudo pacman -S archlinuxcn-keyring
+yaourt
+sudo pacman -S yaourt
+sudo pacman -S fcitx
+vim .xprofile
+ll .config/autostart
+ls .config/autostart
+vim .xprofile
+yaourt -S fcitx-sougoupinyin
+yaourt -S fcitx-sogoupinyin
+ping -c 3 www.baidu.com
+curl
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo pacman -S git
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
