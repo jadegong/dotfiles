@@ -3,6 +3,7 @@ Linux config files
 
 - ~/.zshrc -> zsh config file. just change the theme option, including zsh-autosuggestion and zsh-highlighting;
 - ~/.(g)vimrc -> (g)vim config file on Linux;(I changed my os to Archlinux, with vim 8.0, so I use YouCompleteMe and vim-airline instead of neocomplete and vim-powerline);
+- init.vim -> neovim config file.
 - _(g)vimrc -> (g)vim config files on Windows.
 - ~/.vimrc.bundles -> (g)vim plugins managed by bundle(Only on unix based system).
 - config -> i3wm config file with font awesome icon-font; Be careful about the auto startup programs;(Mine is in ~/.config/i3/)
