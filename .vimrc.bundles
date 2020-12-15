@@ -7,12 +7,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " config vim-go
-Plugin 'fatih/vim-go'
-Plugin 'buoto/gotests-vim' " vim gotests
+" Plugin 'fatih/vim-go'
+" Plugin 'buoto/gotests-vim' " vim gotests
 " config neocomplete
 "Plugin 'Shougo/neocomplete.vim'
 " config YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 " config UltiSnips
 Plugin 'SirVer/ultisnips'
 
@@ -40,7 +40,11 @@ Plugin 'majutsushi/tagbar'
 " piv: php
 Plugin 'spf13/PIV'
 " neodark scheme
-Plugin 'KeitaNakamura/neodark.vim'
+" Plugin 'KeitaNakamura/neodark.vim'
+" vim-monokai scheme
+Plugin 'patstockwell/vim-monokai-tasty'
+" onedark scheme
+Plugin 'joshdick/onedark'
 " vim-snippets
 Plugin 'honza/vim-snippets'
 " vim syntastic
