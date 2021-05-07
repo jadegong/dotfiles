@@ -43,7 +43,9 @@ Plugin 'jiangmiao/auto-pairs'
 " piv: php
 " Plugin 'spf13/PIV'
 " neodark scheme
-Plugin 'joshdick/onedark.vim'
+" Plugin 'joshdick/onedark.vim'
+" vim-code-dark scheme
+Plugin 'tomasiser/vim-code-dark'
 " icons
 Plugin 'ryanoasis/vim-devicons'
 " NERDTree highlight
@@ -64,6 +66,7 @@ Plugin 'neoclide/coc.nvim'
 Plugin 'kevinoid/vim-jsonc'
 " vim-vue
 Plugin 'posva/vim-vue'
+Plugin 'leafOfTree/vim-vue-plugin'
 call vundle#end()
 
 filetype on

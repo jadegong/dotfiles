@@ -16,6 +16,70 @@ set laststatus=2
 set ruler
 set cmdheight=1
 set showtabline=1
+" 设置代码折叠
+set foldenable
+" set foldmethod=syntax
+set foldmethod=manual
+set foldlevel=100    " 启动vim时关闭折叠
+
+" 设置对齐
+set ai " 自动对齐
+set si
+set smarttab
+set wrap
+set lbr
+set tw=0
+" No sound on errors.
+set noerrorbells
+set novisualbell
+" smart backspace
+set backspace=start,indent,eol
+" set clipboard=unnamedplus
+" set selection=inclusive " gvim设置multiple-cursors
+set nu
+set relativenumber
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+set scrolloff=10
+set cursorline
+set hlsearch
+set incsearch
+" 设置禁止光标闪烁
+set gcr+=a:blinkon0
+" set swapfile dir
+set directory=/tmp
+
+" 设置编码
+set encoding=utf-8
+set fileencodings=utf-8,gbk,default,latin1
+
+" 设置缩进
+set cindent
+set smartindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+" 对不同文件类型进行不同的缩进设置
+au FileType html,python,vim,javascript,css,vue setl shiftwidth=4
+au FileType html,python,vim,javascript,css,vue setl tabstop=4
+au FileType html,python,vim,javascript,css,vue setl softtabstop=4
+au FileType java,php setl shiftwidth=4
+au FileType java,php setl tabstop=4
+au FileType java,php setl softtabstop=4
+
+" config keymaps
+nnoremap <silent><leader>y "+yy
+vnoremap <silent><leader>y "+y
+nnoremap <silent><leader>p "+p
+vnoremap <silent><leader>p "+p
+" Save all files
+nnoremap <silent><leader>xs :wa<CR>
+" nnoremap <silent>j gj
+" nnoremap <silent>k gk
+" end config keymaps
+
+
 "set tabline=%!MyTabLine()
 " show tabline function
 function MyTabLine()
@@ -44,40 +108,45 @@ function MyTabLabel(n)
   let l .= bufname(buflist[winnr - 1])
   return l
 endfunction
-set nu
-set relativenumber
-autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
-set scrolloff=15
-set cursorline
-set hlsearch
-set incsearch
-" 设置禁止光标闪烁
-set gcr+=a:blinkon0
-" set swapfile dir
-set directory=/tmp
-
-" 设置编码
-set encoding=utf-8
-set fileencodings=utf-8,gbk,default,latin1
-
-" 设置缩进
-set cindent
-set smartindent
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-" 对不同文件类型进行不同的缩进设置
-au FileType html,python,vim,javascript,css,vue setl shiftwidth=4
-au FileType html,python,vim,javascript,css,vue setl tabstop=4
-au FileType html,python,vim,javascript,css,vue setl softtabstop=4
-au FileType java,php setl shiftwidth=4
-au FileType java,php setl tabstop=4
-au FileType java,php setl softtabstop=4
+" 标签页快捷键
+nnoremap <M-Left> :tabprevious<CR>
+nnoremap <M-h> :tabprevious<CR>
+nnoremap <M-S-Left> :tabm -1<CR>
+nnoremap <M-S-h> :tabm -1<CR>
+nnoremap <M-Right> :tabnext<CR>
+nnoremap <M-l> :tabnext<CR>
+nnoremap <M-S-Right> :tabm +1<CR>
+nnoremap <M-S-l> :tabm +1<CR>
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+nnoremap <M-0> :tablast<CR>
+nnoremap <M-S-1> :tabm 0<CR>
+nnoremap <M-S-2> :tabm 1<CR>
+nnoremap <M-S-3> :tabm 2<CR>
+nnoremap <M-S-4> :tabm 3<CR>
+nnoremap <M-S-5> :tabm 4<CR>
+nnoremap <M-S-6> :tabm 5<CR>
+nnoremap <M-S-7> :tabm 6<CR>
+nnoremap <M-S-8> :tabm 7<CR>
+nnoremap <M-S-9> :tabm 8<CR>
+nnoremap <M-S-0> :tabm 9<CR>
+" buffer delete
+nnoremap <silent><leader>xk :bd<CR>
+" end tab config
+" vue config
 autocmd FileType vue syntax sync fromstart
 let g:vue_pre_processors = ['scss']
-
+" vue plugin
+let g:vim_vue_plugin_load_full_syntax = 1
+let g:vim_vue_plugin_use_scss = 1
+" let g:vim_vue_plugin_use_foldexpr = 1
 " coc configurations
 " Set updatetime not so long (default to 4000ms) 
 set updatetime=1000
@@ -136,54 +205,13 @@ augroup mygroup
 augroup end
 
 " end coc configurations
-" 设置代码折叠
-set foldenable
-set foldmethod=syntax
-set foldlevel=100    " 启动vim时关闭折叠
-
-" 设置对齐
-set ai " 自动对齐
-set si
-set smarttab
-set wrap
-set lbr
-set tw=0
-" No sound on errors.
-set noerrorbells
-set novisualbell
-" smart backspace
-set backspace=start,indent,eol
-set clipboard=unnamedplus
-set selection=inclusive " gvim设置multiple-cursors
-
-" config keymaps
-nnoremap <silent><leader>y "+yy
-vnoremap <silent><leader>y "+y
-nnoremap <silent><leader>p "+p
-vnoremap <silent><leader>p "+p
-
-" 标签页快捷键
-nnoremap <M-Left> :tabprevious<CR>
-nnoremap <M-h> :tabprevious<CR>
-nnoremap <M-Right> :tabnext<CR>
-nnoremap <M-l> :tabnext<CR>
-nnoremap <M-1> 1gt
-nnoremap <M-2> 2gt
-nnoremap <M-3> 3gt
-nnoremap <M-4> 4gt
-nnoremap <M-5> 5gt
-nnoremap <M-6> 6gt
-nnoremap <M-7> 7gt
-nnoremap <M-8> 8gt
-nnoremap <M-9> 9gt
-nnoremap <M-0> :tablast<CR>
 
 
 " config vim updatetime
 set updatetime=250
 
 " config vim minimap
-let g:minimap_toggle='<F4>' "F4 toggle minimap
+" let g:minimap_toggle='<F4>' "F4 toggle minimap
 
 " config js files
 let g:javascript_plugin_jsdoc = 1
@@ -216,7 +244,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 set t_Co=256
 " let g:neodark#background='gray'
 " let g:neodark#user_256color=1
-colorscheme onedark
+colorscheme codedark
 
 " config statusline
 "let g:Powerline_symbols = 'fancy'
@@ -226,7 +254,7 @@ let g:airline#extensions#tabline#exclude_preview = 0
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='onedark'
+let g:airline_theme='codedark'
 let g:airline_powerline_fonts=1
 
 " config vim-syntastic
@@ -263,7 +291,7 @@ let g:NERDTreeShowHidden=1
 " Change the arrow
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-let g:NERDTreeWinSize = 35
+let g:NERDTreeWinSize = 45
 "NERDTree git symbol
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
