@@ -10,4 +10,4 @@ Linux config files
 - blurlock -> i3lock shell to exec when press Mod+l(You can bind this to other keys.);(in /usr/local/bin/) I use ``dm-tool lock`` to lock screen instead.
 - .i3status.conf/.i3block.conf -> i3status/i3blocks config file.(Mine is in ~/.config/i3/)   Now I use py3status instead.
 At last, I'd like to show my screencast after I've done all the configurations.   
-![](https://raw.githubusercontent.com/jadegong/dotfiles/master/screenFetch-2020-12-11_13-57-07.png)
+![](https://raw.githubusercontent.com/jadegong/dotfiles/master/2020-12-18-095830_1920x1200_scrot.png)
