@@ -8,5 +8,5 @@ if has("gui_running")
   set guioptions-=b
   " set guitablabel=%N: %f
   " set showtabline=0
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+  set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\ 10
 endif

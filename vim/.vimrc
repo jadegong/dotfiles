@@ -74,7 +74,8 @@ vnoremap <silent><leader>y "+y
 nnoremap <silent><leader>p "+p
 vnoremap <silent><leader>p "+p
 " Save all files
-nnoremap <silent><leader>xs :wa<CR>
+nnoremap <silent><leader>fs :w<CR>
+nnoremap <silent><leader>fS :wa<CR>
 " nnoremap <silent>j gj
 " nnoremap <silent>k gk
 " end config keymaps
@@ -137,16 +138,33 @@ nnoremap <M-S-7> :tabm 6<CR>
 nnoremap <M-S-8> :tabm 7<CR>
 nnoremap <M-S-9> :tabm 8<CR>
 nnoremap <M-S-0> :tabm 9<CR>
+" window keybindings
+" nnoremap <silent><leader>wh 
 " buffer delete
-nnoremap <silent><leader>xk :bd<CR>
+nnoremap <silent><leader>bd :bd<CR>
 " end tab config
 " vue config
 autocmd FileType vue syntax sync fromstart
 let g:vue_pre_processors = ['scss']
 " vue plugin
-let g:vim_vue_plugin_load_full_syntax = 1
-let g:vim_vue_plugin_use_scss = 1
+" let g:vim_vue_plugin_load_full_syntax = 1
+" let g:vim_vue_plugin_use_scss = 1
 " let g:vim_vue_plugin_use_foldexpr = 1
+let g:vim_vue_plugin_config = { 
+      \'syntax': {
+      \   'template': ['html'],
+      \   'script': ['javascript'],
+      \   'style': ['css', 'less', 'scss'],
+      \},
+      \'full_syntax': [],
+      \'initial_indent': [],
+      \'attribute': 0,
+      \'keyword': 0,
+      \'foldexpr': 1,
+      \'debug': 0,
+      \}
+
+
 " coc configurations
 " Set updatetime not so long (default to 4000ms) 
 set updatetime=1000
@@ -190,11 +208,16 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rr <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>=  <Plug>(coc-format-selected)
+nmap <leader>=  <Plug>(coc-format-selected)
+" Markdown preview enhanced settings
+nmap <leader>mp  :CocCommand markdown-preview-enhanced.openPreview<cr>
+nmap <leader>ms  :CocCommand markdown-preview-enhanced.syncPreview<cr>
+nmap <leader>mr  :CocCommand markdown-preview-enhanced.runCodeChunk<cr>
+nmap <leader>ma  :CocCommand markdown-preview-enhanced.runAllCodeChunkS<cr>
 
 augroup mygroup
   autocmd!
@@ -281,7 +304,7 @@ map <F3> :TagbarToggle<CR>
 
 
 "NERDTree config
-map <F2> :NERDTreeTabsToggle<CR>
+nmap <silent><leader>ft :NERDTreeTabsToggle<CR>
 " 关闭vim时，如果没有打开的文件，关闭NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " show line numbers
@@ -385,8 +408,8 @@ let g:NERDSpaceDelims = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 " set keybindings.
-nmap <silent><leader>\ <plug>NERDCommenterToggle
-vmap <silent><leader>\ <plug>NERDCommenterToggle
+nmap <silent><leader>; <plug>NERDCommenterToggle
+vmap <silent><leader>; <plug>NERDCommenterToggle
 " imap <silent><leader>\ <Esc><plug>NERDCommenterToggle :startinsert<CR>
 
 " vim-go settings
