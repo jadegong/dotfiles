@@ -3,6 +3,7 @@ let mapleader="\<space>"
 " 设置重新载入.vimrc快捷键
 map <silent> <leader>ss :source ~/.vimrc<CR>
 map <silent> <leader>ee :e ~/.vimrc<cr>
+nnoremap <silent><leader>qq :qa<CR>
 
 set nocompatible
 if filereadable(expand("~/.vimrc.bundles"))
@@ -69,46 +70,50 @@ au FileType java,php setl tabstop=4
 au FileType java,php setl softtabstop=4
 
 " config keymaps
-nnoremap <silent><leader>y "+yy
+nnoremap <silent><leader>y "+y
 vnoremap <silent><leader>y "+y
 nnoremap <silent><leader>p "+p
 vnoremap <silent><leader>p "+p
-" Save all files
+" File keybindings
 nnoremap <silent><leader>fs :w<CR>
 nnoremap <silent><leader>fS :wa<CR>
-" nnoremap <silent>j gj
-" nnoremap <silent>k gk
-" end config keymaps
+nnoremap <silent><leader>ff :Files<CR>
+nnoremap <silent><leader>fg :GFiles<CR>
+nnoremap <silent><leader>fr :History<CR>
+" end config file keymaps
+" Search keymaps
+nnoremap <silent><leader>sr :RG<CR>
+nnoremap <silent><leader>sa :Ag<CR>
 
 
 "set tabline=%!MyTabLine()
 " show tabline function
-function MyTabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
-    endif
-    let s .= '%' . (i + 1) . 'T'
-    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-  endfor
-  let s .= '%#TabLineFill#%T'
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999Xclose'
-  endif
-  return s
-endfunction
-" each tab label function
-function MyTabLabel(n)
-  let l = ''
-  let l .= a:n . ':'
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  let l .= bufname(buflist[winnr - 1])
-  return l
-endfunction
+" function MyTabLine()
+  " let s = ''
+  " for i in range(tabpagenr('$'))
+    " if i + 1 == tabpagenr()
+      " let s .= '%#TabLineSel#'
+    " else
+      " let s .= '%#TabLine#'
+    " endif
+    " let s .= '%' . (i + 1) . 'T'
+    " let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  " endfor
+  " let s .= '%#TabLineFill#%T'
+  " if tabpagenr('$') > 1
+    " let s .= '%=%#TabLine#%999Xclose'
+  " endif
+  " return s
+" endfunction
+" " each tab label function
+" function MyTabLabel(n)
+  " let l = ''
+  " let l .= a:n . ':'
+  " let buflist = tabpagebuflist(a:n)
+  " let winnr = tabpagewinnr(a:n)
+  " let l .= bufname(buflist[winnr - 1])
+  " return l
+" endfunction
 " 标签页快捷键
 nnoremap <M-Left> :tabprevious<CR>
 nnoremap <M-h> :tabprevious<CR>
@@ -138,11 +143,33 @@ nnoremap <M-S-7> :tabm 6<CR>
 nnoremap <M-S-8> :tabm 7<CR>
 nnoremap <M-S-9> :tabm 8<CR>
 nnoremap <M-S-0> :tabm 9<CR>
-" window keybindings
-" nnoremap <silent><leader>wh 
-" buffer delete
-nnoremap <silent><leader>bd :bd<CR>
 " end tab config
+
+" window keybindings
+nnoremap <silent><leader>wh <C-w>h
+nnoremap <silent><leader>wj <C-w>j
+nnoremap <silent><leader>wk <C-w>k
+nnoremap <silent><leader>wl <C-w>l
+nnoremap <silent><leader>w= <C-w>=
+nnoremap <silent><leader>ws :split<CR>
+nnoremap <silent><leader>wv :vsplit<CR>
+" Delete current window
+nnoremap <silent><leader>wd <C-w>q
+" Delete Buffer and window
+nnoremap <silent><leader>wx :bd<CR> 
+" nnoremap <silent><leader>wh <C-w>h
+" End window keybindings
+
+" buffer keybindings
+nnoremap <silent><leader>bb :Buffers<CR>
+nnoremap <silent><leader>bp :bp<CR>
+nnoremap <silent><leader>bn :bn<CR>
+" Delete buffer winout close window
+nnoremap <silent><leader>bd :ene<CR>:bw #<CR>
+" Delete Buffer and window
+nnoremap <silent><leader>bx :bd<CR>
+" End buffer keybindings
+
 " vue config
 autocmd FileType vue syntax sync fromstart
 let g:vue_pre_processors = ['scss']
@@ -166,6 +193,7 @@ let g:vim_vue_plugin_config = {
 
 
 " coc configurations
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-markdown-preview-enhanced', 'coc-snippets', 'coc-vetur', 'coc-vimlsp']
 " Set updatetime not so long (default to 4000ms) 
 set updatetime=1000
 " jsonc file
@@ -183,15 +211,33 @@ call SetupCommandAbbrs('C', 'CocConfig')
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ CheckBackSpace() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" function! s:check_back_space() abort
+  " let col = col('.') - 1
+  " return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 
 " Use <c-space> to trigger completion.
@@ -200,12 +246,15 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Symbol renaming.
 nmap <leader>rr <Plug>(coc-rename)
@@ -226,6 +275,9 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>ef  <Plug>(coc-fix-current) " error fix
 
 " end coc configurations
 
@@ -271,7 +323,7 @@ colorscheme codedark
 
 " config statusline
 "let g:Powerline_symbols = 'fancy'
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#exclude_preview = 0
 let g:airline#extensions#tabline#show_buffers = 0
@@ -304,7 +356,7 @@ map <F3> :TagbarToggle<CR>
 
 
 "NERDTree config
-nmap <silent><leader>ft :NERDTreeTabsToggle<CR>
+nmap <silent><leader>ft :NERDTreeTabsToggle<CR><C-w>=
 " 关闭vim时，如果没有打开的文件，关闭NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " show line numbers
@@ -327,74 +379,16 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+" NERDTree keybindings
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapOpenPreviewSplit = 'gs'
+let g:NERDTreeMapOpenVSplit = 'v'
+let g:NERDTreeMapOpenPreviewVSplit = 'gv'
+
+" End NERDTree config
 
 " vim signify configurations
 set signcolumn=yes
-
-" YCM settings
-" 通过下箭头选择下一个提示，上箭头同样，Ctrl+Space触发提示
-"set completeopt-=preview
-"let g:ycm_key_list_select_completion=['<Down>']
-"let g:ycm_key_list_previous_completion=['<Up>']
-"let g:ycm_key_invoke_completion='<C-Space>'
-"let g:ycm_completion_confirm_key='<enter>'
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"  "回车即选中当前项
-"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"set completeopt=longest,menu
-"let g:yvm_add_preview_to_completeopt=1
-"let g:ycm_autoclose_preview_window_after_completion=1
-"let g:ycm_autoclose_preview_window_after_insertion=1 "离开插入模式后自动关闭预览窗口
-"let g:ycm_complete_in_comments=1
-"let g:ycm_complete_in_strings=1
-"let g:ycm_min_num_of_chars_for_completion=3
-"let g:ycm_cache_omnifunc=0
-"let g:ycm_seed_identifiers_with_syntax=1
-"let g:ycm_collect_identifiers_from_tags_files=1
-"let g:ycm_confirm_extra_conf=0
-"let g:ycm_semantic_triggers =  {
-  "\ 'c': ['->', '.'],
-  "\ 'cpp': ['->', '.', '::'],
-  "\ 'php': ['->', '::'],
-  "\ 'cs,java,javascript,typescript,python,vb,elixir,go' : ['.'],
-  "\}
-
-" Config neocomplete settings
-"set completeopt-=preview  " Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-"let g:neocomplete#enable_at_startup = 1 " Use neocomplete.
-"let g:neocomplete#enable_smart_case = 1 " Use smartcase.
-"let g:neocomplete#sources#syntax#min_keyword_length = 3 " Set minimum syntax keyword length.
-"let g:neocomplcache_enable_fuzzy_completion = 1               " 开启模糊匹配
-"let g:neocomplcache_fuzzy_completion_start_length = 3         " 3个字母后开启模糊匹配
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-"if !exists('g:neocomplete#keyword_patterns')
-    "let g:neocomplete#keyword_patterns = {}
-"endif
-"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-"" Plugin key-mappings.
-"inoremap <expr><C-g>     neocomplete#undo_completion()
-"inoremap <expr><C-l>     neocomplete#complete_common_string()
-"" Recommended key-mappings.
-"" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-  "return (pumvisible() ? "\<C-y>" : "\<CR>" )
-  "" For no inserting <CR> key.
-"endfunction
-"" <Down>/<Up>: completion.
-"inoremap <expr><Down>  pumvisible() ? "\<C-n>" : "\<Down>"
-"inoremap <expr><Up>  pumvisible() ? "\<C-p>" : "\<Up>"
-"" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-"" Enable omni completion.
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " UltiSnips settings
 " 通过tab展开
@@ -421,3 +415,19 @@ vmap <silent><leader>; <plug>NERDCommenterToggle
 " let g:go_highlight_build_constraints = 1
 
 " vim-gotests
+
+" fzf configurations
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+" end fzf configurations
+
+" vimtex configurations
+let g:vimtex_view_method = 'zathura'
+" End vimtex configurations

@@ -67,6 +67,14 @@ Plugin 'kevinoid/vim-jsonc'
 " vim-vue
 Plugin 'posva/vim-vue'
 Plugin 'leafOfTree/vim-vue-plugin'
+
+" fzf
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+" vimtex
+Plugin 'lervag/vimtex'
+
 call vundle#end()
 
 filetype on
