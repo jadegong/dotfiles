@@ -70,19 +70,27 @@ au FileType java,php setl tabstop=4
 au FileType java,php setl softtabstop=4
 
 " config keymaps
+" 系统剪切板相关按键配置
 nnoremap <silent><leader>y "+y
 vnoremap <silent><leader>y "+y
 nnoremap <silent><leader>p "+p
 vnoremap <silent><leader>p "+p
 " File keybindings
+" 保存文件快捷键
 nnoremap <silent><leader>fs :w<CR>
+" 保存所有文件快捷键
 nnoremap <silent><leader>fS :wa<CR>
+" 使用fzf查找文件
 nnoremap <silent><leader>ff :Files<CR>
+" 使用fzf查看git文件
 nnoremap <silent><leader>fg :GFiles<CR>
+" 使用fzf查找历史文件
 nnoremap <silent><leader>fr :History<CR>
 " end config file keymaps
 " Search keymaps
+" 在fzf中使用rg查找文本，本方法为自定义方法，见line 420
 nnoremap <silent><leader>sr :RG<CR>
+" 在fzf中使用ag查找文本
 nnoremap <silent><leader>sa :Ag<CR>
 
 
@@ -114,7 +122,7 @@ nnoremap <silent><leader>sa :Ag<CR>
   " let l .= bufname(buflist[winnr - 1])
   " return l
 " endfunction
-" 标签页快捷键
+" 标签页快捷键(目前标签页用得比较少，多使用window和buffer快捷键了)
 nnoremap <M-Left> :tabprevious<CR>
 nnoremap <M-h> :tabprevious<CR>
 nnoremap <M-S-Left> :tabm -1<CR>
@@ -146,14 +154,21 @@ nnoremap <M-S-0> :tabm 9<CR>
 " end tab config
 
 " window keybindings
+" 光标移动至左边window
 nnoremap <silent><leader>wh <C-w>h
+" 光标移动至右边window
 nnoremap <silent><leader>wj <C-w>j
+" 光标移动至上边window
 nnoremap <silent><leader>wk <C-w>k
+" 光标移动至下边window
 nnoremap <silent><leader>wl <C-w>l
+" 按照当前布局所有window高宽平分
 nnoremap <silent><leader>w= <C-w>=
+" 水平分割新建一个window
 nnoremap <silent><leader>ws :split<CR>
+" 垂直分割新建一个window
 nnoremap <silent><leader>wv :vsplit<CR>
-" Delete current window
+" Delete current window(不回收当前文件buffer)
 nnoremap <silent><leader>wd <C-w>q
 " Delete Buffer and window
 nnoremap <silent><leader>wx :bd<CR> 
@@ -161,12 +176,15 @@ nnoremap <silent><leader>wx :bd<CR>
 " End window keybindings
 
 " buffer keybindings
+" 使用fzf查找当前所有buffers
 nnoremap <silent><leader>bb :Buffers<CR>
+" 打开上一个buffer的内容
 nnoremap <silent><leader>bp :bp<CR>
+" 打开下一个buffer的内容
 nnoremap <silent><leader>bn :bn<CR>
 " Delete buffer winout close window
 nnoremap <silent><leader>bd :ene<CR>:bw #<CR>
-" Delete Buffer and window
+" Delete Buffer and window, 与<leader>wx 效果相同；
 nnoremap <silent><leader>bx :bd<CR>
 " End buffer keybindings
 
@@ -277,10 +295,10 @@ augroup mygroup
 augroup end
 
 " Apply AutoFix to problem on the current line.
-nmap <leader>ef  <Plug>(coc-fix-current) " error fix
+" error fix
+nmap <leader>ef  <Plug>(coc-fix-current)
 
 " end coc configurations
-
 
 " config vim updatetime
 set updatetime=250
@@ -295,23 +313,6 @@ let g:javascript_plugin_ngdoc = 1
 " Js and ts file syntax.
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-" config jsbeautify
-"map <C-M-f> :call JsBeautify()<CR>
-" autocmd FileType javascript noremap <buffer>  <C-M-f> :call JsBeautify()<cr>
-" for json
-" autocmd FileType json noremap <buffer> <C-M-f> :call JsonBeautify()<cr>
-" for jsx
-" autocmd FileType jsx noremap <buffer> <C-M-f> :call JsxBeautify()<cr>
-" for html
-" autocmd FileType html noremap <buffer> <C-M-f> :call HtmlBeautify()<cr>
-" for css or scss
-" autocmd FileType css noremap <buffer> <C-M-f> :call CSSBeautify()<cr>
-" visual mode
-" autocmd FileType javascript vnoremap <buffer>  <C-M-f> :call RangeJsBeautify()<cr>
-" autocmd FileType json vnoremap <buffer> <C-M-f> :call RangeJsonBeautify()<cr>
-" autocmd FileType jsx vnoremap <buffer> <C-M-f> :call RangeJsxBeautify()<cr>
-" autocmd FileType html vnoremap <buffer> <C-M-f> :call RangeHtmlBeautify()<cr>
-" autocmd FileType css vnoremap <buffer> <C-M-f> :call RangeCSSBeautify()<cr>
 
 " set  molokai color scheme
 " let g:molokai_original = 1
@@ -352,8 +353,7 @@ let g:syntastic_style_warning_symbol = '≈'
 
 
 "tagbar config
-map <F3> :TagbarToggle<CR>
-
+" map <F3> :TagbarToggle<CR>
 
 "NERDTree config
 nmap <silent><leader>ft :NERDTreeTabsToggle<CR><C-w>=
@@ -426,6 +426,7 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.4 } }
 " end fzf configurations
 
 " vimtex configurations
