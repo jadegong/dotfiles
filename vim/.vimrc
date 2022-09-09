@@ -156,26 +156,39 @@ nnoremap <M-S-0> :tabm 9<CR>
 " window keybindings
 " 光标移动至左边window
 nnoremap <silent><leader>wh <C-w>h
-" 光标移动至右边window
+" 光标移动至下边window
 nnoremap <silent><leader>wj <C-w>j
 " 光标移动至上边window
 nnoremap <silent><leader>wk <C-w>k
-" 光标移动至下边window
+" 光标移动至右边window
 nnoremap <silent><leader>wl <C-w>l
+" 当前window移动至最左边，高度撑满屏幕
+nnoremap <silent><leader>wH <C-w>H
+" 当前window移动至最下边，高度撑满屏幕
+nnoremap <silent><leader>wJ <C-w>J
+" 当前window移动至最上边，高度撑满屏幕
+nnoremap <silent><leader>wK <C-w>K
+" 当前window移动至最右边，高度撑满屏幕
+nnoremap <silent><leader>wL <C-w>L
+" 按照当前布局所有window高宽平分
+nnoremap <silent><leader>w= <C-w>=
 " 按照当前布局所有window高宽平分
 nnoremap <silent><leader>w= <C-w>=
 " 水平分割新建一个window
 nnoremap <silent><leader>ws :split<CR>
 " 垂直分割新建一个window
 nnoremap <silent><leader>wv :vsplit<CR>
-" Delete current window(不回收当前文件buffer)
+" Delete current window(不回收当前文件buffer) :clo[se], <C-w>c
 nnoremap <silent><leader>wd <C-w>q
 " Delete Buffer and window
 nnoremap <silent><leader>wx :bd<CR> 
-" nnoremap <silent><leader>wh <C-w>h
+" 关闭当前window外的所有window :on[ly]
+nnoremap <silent><leader>wo <C-w>o
 " End window keybindings
 
 " buffer keybindings
+" buffer被改变过也可以直接切换到其他buffer
+set hidden
 " 使用fzf查找当前所有buffers
 nnoremap <silent><leader>bb :Buffers<CR>
 " 打开上一个buffer的内容
@@ -320,7 +333,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 set t_Co=256
 " let g:neodark#background='gray'
 " let g:neodark#user_256color=1
-colorscheme codedark
+colorscheme onedark
 
 " config statusline
 "let g:Powerline_symbols = 'fancy'
@@ -330,25 +343,25 @@ let g:airline#extensions#tabline#exclude_preview = 0
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='codedark'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts=1
 
 " config vim-syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_go_checkers = ['gofmt','gometalinter','gotype', 'govet']
 
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '∆'
-let g:syntastic_style_warning_symbol = '≈'
+" let g:syntastic_error_symbol = '✗'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '∆'
+" let g:syntastic_style_warning_symbol = '≈'
 " end vim-syntastic
 
 
@@ -418,7 +431,7 @@ vmap <silent><leader>; <plug>NERDCommenterToggle
 
 " fzf configurations
 function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let command_fmt = "rg --column --line-number --no-heading --color=always -g '!{node_modules,.git,.idea,.vscode,.sass-cache}' --smart-case -- %s || true"
   let initial_command = printf(command_fmt, shellescape(a:query))
   let reload_command = printf(command_fmt, '{q}')
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
