@@ -32,7 +32,9 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((javascript :variables
+   '((vimscript :variables
+                vimscript-backend 'lsp)
+     (javascript :variables
                  javascript-backend 'lsp
                  javascript-import-tool 'import-js
                  javascript-fmt-tool 'prettier
@@ -51,6 +53,12 @@ This function should only modify configuration layer settings."
 
      ;; prettier
      prettier
+     ;; pdf
+     ;; pdf
+     ;; latex
+     ;; (latex :variables
+     ;;        latex-backend 'lsp
+     ;;        latex-view-pdf-in-split-window t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -278,7 +286,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+                               :size 9.0
                                :weight normal
                                :width normal)
 

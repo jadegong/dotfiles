@@ -1,80 +1,79 @@
 set nocompatible
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Use vim-plug to manage plugins
+call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Plug 'VundleVim/Vundle.vim'
 " config vim-go
-" Plugin 'fatih/vim-go'
-" Plugin 'buoto/gotests-vim' " vim gotests
+" Plug 'fatih/vim-go'
+" Plug 'buoto/gotests-vim' " vim gotests
 " config neocomplete
-" Plugin 'Shougo/neocomplete.vim'
+" Plug 'Shougo/neocomplete.vim'
 " config YouCompleteMe
-" Plugin 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " config UltiSnips
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " js plugins
 " jsbeautify
-" Plugin 'maksimr/vim-jsbeautify'
+" Plug 'maksimr/vim-jsbeautify'
 " improved indentation and syntax for js files
-" Plugin 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 " Syntax for typescript files.
-" Plugin 'leafgarland/typescript-vim'
-" Plugin 'maxmellon/vim-jsx-pretty'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'maxmellon/vim-jsx-pretty'
 " config airline instead to display status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " config NERDtree
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs' "show NERDTree 1n all tabs
-Plugin 'Xuyuanp/nerdtree-git-plugin' "show git infos in NERDTree
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs' "show NERDTree 1n all tabs
+Plug 'Xuyuanp/nerdtree-git-plugin' "show git infos in NERDTree
 " Config vim gitgutter
-"Plugin 'airblade/vim-gitgutter'
-Plugin 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 " Config minimap
-" Plugin 'severin-lemaignan/vim-minimap'
+" Plug 'severin-lemaignan/vim-minimap'
 " config auto-pairs
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 " tagbar
-" Plugin 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 " piv: php
-" Plugin 'spf13/PIV'
+" Plug 'spf13/PIV'
 " neodark scheme
-" Plugin 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 " vim-code-dark scheme
-Plugin 'tomasiser/vim-code-dark'
+" Plug 'tomasiser/vim-code-dark'
 " icons
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 " NERDTree highlight
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " vim-snippets
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 " vim syntastic
-Plugin 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 " vim nerdcomment
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " vim multiple cursors
-" Plugin 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 " vim indentLine
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " coc nvim auto complete
-Plugin 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim'
 " vim jsonc
-Plugin 'kevinoid/vim-jsonc'
+" Plug 'kevinoid/vim-jsonc'
 " vim-vue
-Plugin 'posva/vim-vue'
-Plugin 'leafOfTree/vim-vue-plugin'
+" Plug 'posva/vim-vue'
+" Plug 'leafOfTree/vim-vue-plugin'
 
 " fzf
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " vimtex
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
-call vundle#end()
+call plug#end()
 
 filetype on

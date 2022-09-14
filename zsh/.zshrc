@@ -109,7 +109,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 
-# git 
+# git
 # export GIT_TRACE_PACKET=1
 # export GIT_TRACE=1
 # export GIT_CURL_VERBOSE=1

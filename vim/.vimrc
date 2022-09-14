@@ -93,35 +93,6 @@ nnoremap <silent><leader>sr :RG<CR>
 " 在fzf中使用ag查找文本
 nnoremap <silent><leader>sa :Ag<CR>
 
-
-"set tabline=%!MyTabLine()
-" show tabline function
-" function MyTabLine()
-  " let s = ''
-  " for i in range(tabpagenr('$'))
-    " if i + 1 == tabpagenr()
-      " let s .= '%#TabLineSel#'
-    " else
-      " let s .= '%#TabLine#'
-    " endif
-    " let s .= '%' . (i + 1) . 'T'
-    " let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-  " endfor
-  " let s .= '%#TabLineFill#%T'
-  " if tabpagenr('$') > 1
-    " let s .= '%=%#TabLine#%999Xclose'
-  " endif
-  " return s
-" endfunction
-" " each tab label function
-" function MyTabLabel(n)
-  " let l = ''
-  " let l .= a:n . ':'
-  " let buflist = tabpagebuflist(a:n)
-  " let winnr = tabpagewinnr(a:n)
-  " let l .= bufname(buflist[winnr - 1])
-  " return l
-" endfunction
 " 标签页快捷键(目前标签页用得比较少，多使用window和buffer快捷键了)
 nnoremap <M-Left> :tabprevious<CR>
 nnoremap <M-h> :tabprevious<CR>
@@ -201,27 +172,19 @@ nnoremap <silent><leader>bd :ene<CR>:bw #<CR>
 nnoremap <silent><leader>bx :bd<CR>
 " End buffer keybindings
 
-" vue config
-autocmd FileType vue syntax sync fromstart
-let g:vue_pre_processors = ['scss']
-" vue plugin
-" let g:vim_vue_plugin_load_full_syntax = 1
-" let g:vim_vue_plugin_use_scss = 1
-" let g:vim_vue_plugin_use_foldexpr = 1
-let g:vim_vue_plugin_config = { 
-      \'syntax': {
-      \   'template': ['html'],
-      \   'script': ['javascript'],
-      \   'style': ['css', 'less', 'scss'],
-      \},
-      \'full_syntax': [],
-      \'initial_indent': [],
-      \'attribute': 0,
-      \'keyword': 0,
-      \'foldexpr': 1,
-      \'debug': 0,
-      \}
-
+" git gutter configurations
+" Disable original gitgutter key mappings
+let g:gitgutter_map_keys = 0
+nnoremap <silent><leader>gt :GitGutterToggle<CR>
+nnoremap <silent><leader>gbt :GitGutterBufferToggle<CR>
+nnoremap <silent><leader>gst :GitGutterSignsToggle<CR>
+nnoremap <silent><leader>ght :GitGutterLineHighlightsToggle<CR>
+nnoremap <silent><leader>gn <Plug>(GitGutterNextHunk)
+nnoremap <silent><leader>gN <Plug>(GitGutterPrevHunk)
+nnoremap <silent><leader>gs <Plug>(GitGutterStageHunk)
+nnoremap <silent><leader>gu <Plug>(GitGutterUndoHunk)
+nnoremap <silent><leader>gp <Plug>(GitGutterPreviewHunk)
+nnoremap <silent><leader>gd :GitGutterDiffOrig<CR>
 
 " coc configurations
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-markdown-preview-enhanced', 'coc-snippets', 'coc-vetur', 'coc-vimlsp']
@@ -346,28 +309,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts=1
 
-" config vim-syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_go_checkers = ['gofmt','gometalinter','gotype', 'govet']
-
-" let g:syntastic_error_symbol = '✗'
-" let g:syntastic_style_error_symbol = '⁉️'
-" let g:syntastic_warning_symbol = '∆'
-" let g:syntastic_style_warning_symbol = '≈'
-" end vim-syntastic
-
-
-"tagbar config
-" map <F3> :TagbarToggle<CR>
-
 "NERDTree config
 nmap <silent><leader>ft :NERDTreeTabsToggle<CR><C-w>=
 " 关闭vim时，如果没有打开的文件，关闭NERDTree
@@ -419,16 +360,6 @@ nmap <silent><leader>; <plug>NERDCommenterToggle
 vmap <silent><leader>; <plug>NERDCommenterToggle
 " imap <silent><leader>\ <Esc><plug>NERDCommenterToggle :startinsert<CR>
 
-" vim-go settings
-" let g:go_fmt_command="goimports"
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_structs = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_build_constraints = 1
-
-" vim-gotests
-
 " fzf configurations
 function! RipgrepFzf(query, fullscreen)
     let command_fmt = "rg --column --line-number --no-heading --color=always -g '!{node_modules,.git,.idea,.vscode,.sass-cache}' --smart-case -- %s || true"
@@ -445,3 +376,88 @@ let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.4 } }
 " vimtex configurations
 let g:vimtex_view_method = 'zathura'
 " End vimtex configurations
+
+" vim-go settings
+" let g:go_fmt_command="goimports"
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
+
+" vim-gotests
+
+
+" vue config(abandoned)
+" autocmd FileType vue syntax sync fromstart
+" let g:vue_pre_processors = ['scss']
+" vue plugin
+" let g:vim_vue_plugin_load_full_syntax = 1
+" let g:vim_vue_plugin_use_scss = 1
+" let g:vim_vue_plugin_use_foldexpr = 1
+"let g:vim_vue_plugin_config = { 
+      "\'syntax': {
+      "\   'template': ['html'],
+      "\   'script': ['javascript'],
+      "\   'style': ['css', 'less', 'scss'],
+      "\},
+      "\'full_syntax': [],
+      "\'initial_indent': [],
+      "\'attribute': 0,
+      "\'keyword': 0,
+      "\'foldexpr': 1,
+      "\'debug': 0,
+      "\}
+
+" config vim-syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_go_checkers = ['gofmt','gometalinter','gotype', 'govet']
+
+" let g:syntastic_error_symbol = '✗'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '∆'
+" let g:syntastic_style_warning_symbol = '≈'
+" end vim-syntastic
+
+
+"tagbar config
+" map <F3> :TagbarToggle<CR>
+
+
+"set tabline=%!MyTabLine()
+" show tabline function
+" function MyTabLine()
+  " let s = ''
+  " for i in range(tabpagenr('$'))
+    " if i + 1 == tabpagenr()
+      " let s .= '%#TabLineSel#'
+    " else
+      " let s .= '%#TabLine#'
+    " endif
+    " let s .= '%' . (i + 1) . 'T'
+    " let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  " endfor
+  " let s .= '%#TabLineFill#%T'
+  " if tabpagenr('$') > 1
+    " let s .= '%=%#TabLine#%999Xclose'
+  " endif
+  " return s
+" endfunction
+" " each tab label function
+" function MyTabLabel(n)
+  " let l = ''
+  " let l .= a:n . ':'
+  " let buflist = tabpagebuflist(a:n)
+  " let winnr = tabpagewinnr(a:n)
+  " let l .= bufname(buflist[winnr - 1])
+  " return l
+" endfunction
+
