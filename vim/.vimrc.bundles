@@ -37,6 +37,8 @@ Plug 'mhinz/vim-signify'
 " Plug 'severin-lemaignan/vim-minimap'
 " config auto-pairs
 Plug 'jiangmiao/auto-pairs'
+" config rainbow brackets
+" Plug 'frazrepo/vim-rainbow'
 " tagbar
 " Plug 'majutsushi/tagbar'
 " piv: php
