@@ -1,12 +1,9 @@
-set nocompatible
-filetype off
-
 " Use vim-plug to manage plugins
 call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
 " Plug 'VundleVim/Vundle.vim'
 " config vim-go
-" Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 " Plug 'buoto/gotests-vim' " vim gotests
 " config neocomplete
 " Plug 'Shougo/neocomplete.vim'
@@ -78,4 +75,4 @@ Plug 'lervag/vimtex'
 
 call plug#end()
 
-filetype on
+

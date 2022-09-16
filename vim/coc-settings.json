@@ -1,0 +1,13 @@
+{
+    "languageserver": {
+        "go": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "filetypes": ["go"]
+        },
+        "vue": {
+            "command": "vls",
+            "filetypes": ["vue"]
+        }
+    }
+}
