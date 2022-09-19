@@ -20,15 +20,25 @@ Linux 开发环境配置文件
   ```
 ### 目录结构
   +-- autoload: 存放初始自动加载的配置，插件管理器 [vim-plug](https://github.com/junegunn/vim-plug)，**请自行下载**；
+
   +-- ftplugins: 存放 FileType 相关配置,会自动加载,包含一些针对特定文件绑定的快捷键配置;
+
   +-- config: 存放主要配置；
+
   |  +-- plugins: 该文件夹存放所有插件的配置；
+
   |  +-- |  +--mappings.vim: 所有插件相关的快捷键配置；
+
   |  +-- |  +-- *.vim: 相关插件的配置；
+
   |  +-- vimrc.vim: ～/.vimrc 默认加载该文件，在该文件中加载所有配置文件；
+
   |  +-- general.vim: 通用配置；
+
   |  +-- load_plugins.vim: 加载所有的插件列表；
+
   |  +-- mappings.vim: 所有自定义快捷键配置文件；
+
   +-- coc-settings.json: 存放 [coc.nvim](https://github.com/neoclide/coc.nvim) 的配置；
 
 ## i3wm
