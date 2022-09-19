@@ -13,7 +13,11 @@ Linux 开发环境配置文件
   需要自行安装fzf和ripgrep工具或者ag搜索工具；``sudo pacman -S fzf ripgrep the_silver_searcher``
 ### 安装须知
   - vim: 主要入口``~/.vimrc``以及``~/.gvimrc``, 将vim目录下的其他内容放到 ``$VIMRUNTIME`` 路径下，通常是 ``~/.vim/``，启动vim, 执行 ``:PlugInstall`` 即可。
-  - nvim: 建立一个软连接 ``ln -s ~/.vimrc ~/.vim/init.vim``, 即可正常使用；
+  - nvim: 建立两个软连接，分别表示建立一个.vimrc的软连接，建立一个.vim文件夹的软连接作为nvim的配置文件夹。
+  ```shell
+    ln -s ~/.vimrc ~/.vim/init.vim
+    ln -s ~/.vim ~/.config/nvim
+  ```
 ### 目录结构
   +-- ftplugins: 存放 FileType 相关配置,会自动加载,包含一些针对特定文件绑定的快捷键配置;
 
