@@ -103,6 +103,8 @@ nnoremap <silent><leader>bp :bp<CR>
 nnoremap <silent><leader>bn :bn<CR>
 " Delete buffer winout close window
 nnoremap <silent><leader>bd :Bclose<CR>
+" Delete buffer except current one
+nnoremap <silent><leader>bD :BufOnly<CR>
 " Delete Buffer and window, 与<leader>wx 效果相同；
 nnoremap <silent><leader>bx :bd<CR>
 " End buffer keybindings
@@ -179,4 +181,7 @@ function! s:Bclose(bang, buffer)
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 " end self definition for :Bclose
+
+" Delete other buffers except current one
+command! BufOnly execute '%bdelete|edit #|normal `"'
 

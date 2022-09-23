@@ -168,6 +168,7 @@ assign [class="code-oss"] → $ws3
 assign [class="Gvim"] → $ws3
 assign [class="Emacs"] → $ws4
 assign [class="Rapidsvn"] → $ws5
+assign [class="FileZilla"] → $ws5
 # assign [class="jetbrains-idea"] → $ws5
 assign [class="Pcmanfm"] → $ws6
 assign [class="Thunar"] → $ws6
@@ -285,12 +286,13 @@ bar {
 # startup configurations
 # exec_always xrandr --output eDP1 --primary --mode 1920x1200 --pos 0x0 --rotate normal
 
-exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/map.jpg
+# exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/map.jpg
+exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/background.png
 
 exec_always --no-startup-id fcitx5
 # exec --no-startup-id devmon
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
-# exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-power-manager
 exec_always compton -f
 # exec_always xmodmap /home/jade/.Xmodmap
