@@ -70,11 +70,11 @@ nnoremap <silent><leader>wk <C-w>k
 nnoremap <silent><leader>wl <C-w>l
 " 当前window移动至最左边，高度撑满屏幕
 nnoremap <silent><leader>wH <C-w>H
-" 当前window移动至最下边，高度撑满屏幕
+" 当前window移动至最下边，宽度撑满屏幕
 nnoremap <silent><leader>wJ <C-w>J
 " 当前window移动至最上边，高度撑满屏幕
 nnoremap <silent><leader>wK <C-w>K
-" 当前window移动至最右边，高度撑满屏幕
+" 当前window移动至最右边，宽度撑满屏幕
 nnoremap <silent><leader>wL <C-w>L
 " 按照当前布局所有window高宽平分
 nnoremap <silent><leader>w= <C-w>=
@@ -108,6 +108,16 @@ nnoremap <silent><leader>bD :BufOnly<CR>
 " Delete Buffer and window, 与<leader>wx 效果相同；
 nnoremap <silent><leader>bx :bd<CR>
 " End buffer keybindings
+
+" quickfix keybindings
+" open quickfix window
+nnoremap <silent><leader>co :copen<CR>
+" close quickfix window
+nnoremap <silent><leader>cq :cclose<CR>
+" goto next quickfix item
+nnoremap <silent><leader>cn :cnext<CR>
+" goto previous quickfix item
+nnoremap <silent><leader>cp :cNext<CR>
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
 " Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
