@@ -1,5 +1,5 @@
 " coc configurations
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-markdown-preview-enhanced', 'coc-snippets', 'coc-vetur', 'coc-vimlsp', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-markdown-preview-enhanced', 'coc-webview', 'coc-snippets', 'coc-vetur', 'coc-vimlsp', 'coc-go', 'coc-rust-analyzer']
 " Set updatetime not so long (default to 4000ms) 
 set updatetime=1000
 " jsonc file
@@ -43,6 +43,14 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" Add `:OrganizeImport` command to format current buffer.
+command! -nargs=0 OrganizeImport :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " end coc configurations
 
