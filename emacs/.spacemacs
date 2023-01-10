@@ -32,14 +32,15 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((vimscript :variables
+   '(rust
+     (vimscript :variables
                 vimscript-backend 'lsp)
      (javascript :variables
                  javascript-backend 'lsp
                  javascript-import-tool 'import-js
                  javascript-fmt-tool 'prettier
-                 js2-basic-offset 4
-                 js-indent-level 4
+                 js2-basic-offset 2
+                 js-indent-level 2
                  js2-mode-show-parse-errors nil
                  js2-mode-show-strict-warnings nil
                  node-add-modules-path t)
@@ -50,6 +51,11 @@ This function should only modify configuration layer settings."
      ;; vue
      (vue :variables
           vue-backend 'lsp)
+
+     ;; json
+     (json :variables
+           json-fmt-tool 'prettier
+           json-backend 'lsp)
 
      ;; prettier
      prettier
@@ -65,7 +71,8 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; company
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-tab-key-behavior nil)
      ;; better-defaults
      emacs-lisp
      git
@@ -604,10 +611,10 @@ before packages are loaded."
 
   (setq-default
    ;; web-mode
-   web-mode-markup-indent-offset 4
-   web-mode-css-indent-offset 4
-   web-mode-code-indent-offset 4
-   web-mode-attr-indent-offset 4)
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
 )
 
 
