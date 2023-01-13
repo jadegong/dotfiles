@@ -289,10 +289,17 @@ bar {
 # exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/map.jpg
 exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/background.png
 
+# Tray icons
+# input methods
 exec_always --no-startup-id fcitx5
 # exec --no-startup-id devmon
+# NetworkManager
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-power-manager
+# bluetooth tray icon
+exec --no-startup-id blueberry-tray
+
+
 exec_always compton -f
 # exec_always xmodmap /home/jade/.Xmodmap
