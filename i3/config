@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:DejaVu Sans Mono Book 10
+# font pango:DejaVu Sans Mono Book 10
+font pango:WenQuanYi Micro Hei Mono Regular 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -167,6 +168,8 @@ assign [class="firefox"] → $ws2
 assign [class="code-oss"] → $ws3
 assign [class="Gvim"] → $ws3
 assign [class="Emacs"] → $ws4
+# wps窗口
+assign [class="wps"] → $ws4
 assign [class="Rapidsvn"] → $ws5
 assign [class="FileZilla"] → $ws5
 # assign [class="jetbrains-idea"] → $ws5
