@@ -165,6 +165,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 # assign to workspace
 assign [class="Terminator"] → $ws1
 assign [class="firefox"] → $ws2
+assign [class="google-chrome"] → $ws2
 assign [class="code-oss"] → $ws3
 assign [class="Gvim"] → $ws3
 assign [class="Emacs"] → $ws4
@@ -179,6 +180,7 @@ assign [class="netease-cloud-music"] → $ws7
 assign [class="Clementine"] → $ws7
 assign [class="vlc"] → $ws7
 assign [class="VirtualBox"] → $ws8
+assign [class="clash for windows"] → $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -306,3 +308,4 @@ exec --no-startup-id blueberry-tray
 
 exec_always compton -f
 # exec_always xmodmap /home/jade/.Xmodmap
+# exec --no-startup-id /opt/clashforwindows/cfw
