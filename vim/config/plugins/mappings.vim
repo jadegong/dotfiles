@@ -51,7 +51,7 @@ nmap <leader>rr <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>=  <Plug>(coc-format-selected)
-nmap <leader>=  <Plug>(coc-format-selected)
+nmap <leader>=  :Format<CR>
 " Markdown preview enhanced settings
 nmap <leader>mp  :CocCommand markdown-preview-enhanced.openPreview<cr>
 nmap <leader>ms  :CocCommand markdown-preview-enhanced.syncPreview<cr>
@@ -61,4 +61,8 @@ nmap <leader>ma  :CocCommand markdown-preview-enhanced.runAllCodeChunkS<cr>
 " Apply AutoFix to problem on the current line.
 " error fix
 nmap <leader>ef  <Plug>(coc-fix-current)
+
+" fold
+nnoremap <silent><leader>zo :Fold<CR>
+
 " end coc
