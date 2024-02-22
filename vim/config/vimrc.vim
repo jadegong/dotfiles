@@ -72,5 +72,5 @@ call s:source_file('config/plugins/gigutter.vim')
 call s:source_file('config/plugins/nerdtree.vim')
 call s:source_file('config/plugins/others.vim')
 call s:source_file('config/plugins/mappings.vim')
-
+call s:source_file('config/plugins/which_key.vim')
 

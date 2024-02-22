@@ -72,6 +72,8 @@ Plug 'junegunn/fzf.vim'
 
 " vimtex
 Plug 'lervag/vimtex'
+" which key
+Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 

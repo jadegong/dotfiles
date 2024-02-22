@@ -1,4 +1,5 @@
 {
+  "coc.preferences.maxFileSize": "1GB",
     "languageserver": {
         "go": {
             "command": "gopls",

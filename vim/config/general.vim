@@ -32,7 +32,7 @@ set nu
 set relativenumber
 autocmd InsertEnter * :set norelativenumber number
 autocmd InsertLeave * :set relativenumber
-set scrolloff=10
+set scrolloff=2
 set cursorline
 set hlsearch
 set incsearch

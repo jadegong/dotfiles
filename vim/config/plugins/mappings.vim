@@ -45,18 +45,19 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gg :0<cr>
 
 " Symbol renaming.
-nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>mr <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>=  <Plug>(coc-format-selected)
-nmap <leader>=  :Format<CR>
+xmap <leader>m=  <Plug>(coc-format-selected)
+nmap <leader>m=  :Format<CR>
 " Markdown preview enhanced settings
-nmap <leader>mp  :CocCommand markdown-preview-enhanced.openPreview<cr>
-nmap <leader>ms  :CocCommand markdown-preview-enhanced.syncPreview<cr>
-nmap <leader>mr  :CocCommand markdown-preview-enhanced.runCodeChunk<cr>
-nmap <leader>ma  :CocCommand markdown-preview-enhanced.runAllCodeChunkS<cr>
+nmap <leader>mmp  :CocCommand markdown-preview-enhanced.openPreview<cr>
+nmap <leader>mms  :CocCommand markdown-preview-enhanced.syncPreview<cr>
+nmap <leader>mmr  :CocCommand markdown-preview-enhanced.runCodeChunk<cr>
+nmap <leader>mma  :CocCommand markdown-preview-enhanced.runAllCodeChunkS<cr>
 
 " Apply AutoFix to problem on the current line.
 " error fix
