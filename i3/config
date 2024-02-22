@@ -64,7 +64,8 @@ bindsym $mod+0 mode "$power_management"
 mode "$power_management" {
     bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym l exec --no-startup-id dm-tool lock, mode "default"
+    # bindsym l exec --no-startup-id dm-tool lock, mode "default"
+    bindsym l exec --no-startup-id convert /home/jade/Pictures/map.jpg RGB:- | i3lock --raw 3840x2160:rgb --image /dev/stdin, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym u exec --no-startup-id dm-tool switch-to-greeter, mode "default"
@@ -99,7 +100,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# split in horizontal orientation: WIN+alt+h
 bindsym $mod+Mod1+h split h
 
 # split in vertical orientation
@@ -165,22 +166,26 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 # assign to workspace
 assign [class="Terminator"] → $ws1
 assign [class="firefox"] → $ws2
-assign [class="google-chrome"] → $ws2
+assign [class="Google-chrome"] → $ws2
 assign [class="code-oss"] → $ws3
 assign [class="Gvim"] → $ws3
 assign [class="Emacs"] → $ws4
 # wps窗口
-assign [class="wps"] → $ws4
+assign [class="wps"] → $ws5
+assign [class="et"] → $ws5
+# svn client
 assign [class="Rapidsvn"] → $ws5
 assign [class="FileZilla"] → $ws5
+assign [class="Postman"] → $ws5
 # assign [class="jetbrains-idea"] → $ws5
 assign [class="Pcmanfm"] → $ws6
 assign [class="Thunar"] → $ws6
 assign [class="netease-cloud-music"] → $ws7
+assign [class="TelegramDesktop"] → $ws7
 assign [class="Clementine"] → $ws7
 assign [class="vlc"] → $ws7
 assign [class="VirtualBox"] → $ws8
-assign [class="clash for windows"] → $ws9
+assign [class="Clash for Windows"] → $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -291,8 +296,9 @@ bar {
 # startup configurations
 # exec_always xrandr --output eDP1 --primary --mode 1920x1200 --pos 0x0 --rotate normal
 
-# exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/map.jpg
-exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/background.png
+# exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/1311862.jpeg
+exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/map.jpg
+# exec_always --no-startup-id feh --bg-scale /home/jade/Pictures/background.png
 
 # Tray icons
 # input methods
@@ -303,9 +309,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id xfce4-power-manager
 # bluetooth tray icon
-exec --no-startup-id blueberry-tray
+exec --no-startup-id blueman-applet
 
 
-exec_always compton -f
+# exec_always compton -f
 # exec_always xmodmap /home/jade/.Xmodmap
 # exec --no-startup-id /opt/clashforwindows/cfw
