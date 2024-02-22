@@ -49,7 +49,8 @@ This function should only modify configuration layer settings."
      ;; typescript
      (typescript :variables
                  typescript-fmt-tool 'prettier
-                 typescript-linter 'eslint)
+                 typescript-linter 'eslint
+                 typescript-indent-level 2)
      ;; vue
      (vue :variables
           vue-backend 'lsp)
@@ -58,6 +59,10 @@ This function should only modify configuration layer settings."
      (json :variables
            json-fmt-tool 'prettier
            json-backend 'lsp)
+     ;; python
+     (python :variables
+             python-backend 'anaconda
+             python-sort-imports-on-save t)
 
      ;; prettier
      prettier
@@ -82,7 +87,7 @@ This function should only modify configuration layer settings."
      (lsp :variables
           lsp-lens-enable t)
      ;; markdown
-     multiple-cursors
+     ;; multiple-cursors
      ;; org
      (shell :variables
             shell-default-height 30
@@ -93,7 +98,8 @@ This function should only modify configuration layer settings."
      (treemacs :variables treemacs-use-all-the-icons-theme t)
      ;; add self defined layer keyfreq
      keyfreq
-     eaf)
+     (eaf :variables
+          eaf-apps '(eaf-image-viewer)))
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -588,9 +594,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   ;; mirrors
   (setq configuration-layer-elpa-archives
-        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+        '(("melpa-cn" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+        ("nongnu-cn"   . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
+        ("gnu-cn"   . "https://mirrors.ustc.edu.cn/elpa/gnu/")))
 )
 
 
