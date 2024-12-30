@@ -1,7 +1,7 @@
 " gitgutter
 nnoremap <silent><leader>gt :GitGutterToggle<CR>
 nnoremap <silent><leader>gbt :GitGutterBufferToggle<CR>
-nnoremap <silent><leader>gst :GitGutterSignsToggle<CR>
+nnoremap <silent><leader>gSt :GitGutterSignsToggle<CR>
 nnoremap <silent><leader>ght :GitGutterLineHighlightsToggle<CR>
 nnoremap <silent><leader>gn <Plug>(GitGutterNextHunk)
 nnoremap <silent><leader>gN <Plug>(GitGutterPrevHunk)

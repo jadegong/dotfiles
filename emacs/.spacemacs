@@ -32,9 +32,12 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(yaml
+   '(sql
+     yaml
      nginx
      rust
+     toml
+     major-modes
      (vimscript :variables
                 vimscript-backend 'lsp)
      (javascript :variables
@@ -53,6 +56,7 @@ This function should only modify configuration layer settings."
                  typescript-indent-level 2)
      ;; vue
      (vue :variables
+          ;; vue-ignore-lsp-diagnostics t
           vue-backend 'lsp)
 
      ;; json
@@ -63,6 +67,11 @@ This function should only modify configuration layer settings."
      (python :variables
              python-backend 'anaconda
              python-sort-imports-on-save t)
+
+     ;; c-c++
+     (c-c++ :variables
+            c-c++-backend 'lsp-clangd
+            c-c++-default-mode-for-headers 'c++-mode)
 
      ;; prettier
      prettier
@@ -98,6 +107,7 @@ This function should only modify configuration layer settings."
      (treemacs :variables treemacs-use-all-the-icons-theme t)
      ;; add self defined layer keyfreq
      keyfreq
+     cmake
      (eaf :variables
           eaf-apps '(eaf-image-viewer)))
 
@@ -583,7 +593,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -595,9 +605,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; mirrors
   (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
-        ("nongnu-cn"   . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
-        ("gnu-cn"   . "https://mirrors.ustc.edu.cn/elpa/gnu/")))
-)
+          ("nongnu-cn"   . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
+          ("gnu-cn"   . "https://mirrors.ustc.edu.cn/elpa/gnu/")))
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -605,7 +615,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -630,37 +640,37 @@ before packages are loaded."
     "Copies selection to x-clipboard."
     (interactive)
     (if (display-graphic-p)
-      (progn
-        (message "Yanked region to x-clipboard!")
-        (call-interactively 'clipboard-kill-ring-save)
-      )
-      (if (region-active-p)
         (progn
-          (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
-          (message "Yanked region to clipboard!")
-          (deactivate-mark)
-        )
+          (message "Yanked region to x-clipboard!")
+          (call-interactively 'clipboard-kill-ring-save)
+          )
+      (if (region-active-p)
+          (progn
+            (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
+            (message "Yanked region to clipboard!")
+            (deactivate-mark)
+            )
         (message "No region active; can't yank to clipboard!")
+        )
       )
     )
-  )
 
   (defun paste-from-clipboard ()
     "Pastes from x-clipboard."
     (interactive)
     (if (display-graphic-p)
-      (progn
-        (clipboard-yank)
-        (message "graphics active")
-      )
+        (progn
+          (clipboard-yank)
+          (message "graphics active")
+          )
       (insert (shell-command-to-string "xsel -o -b"))
+      )
     )
-  )
 
   (evil-leader/set-key "o y" 'copy-to-clipboard)
   (evil-leader/set-key "o p" 'paste-from-clipboard)
   ;; End system clipboard in X11
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -670,18 +680,18 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yaml-mode nginx-mode tern ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-inflection string-edit spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc restart-emacs request rainbow-delimiters quickrun prettier-js popwin pcre2el password-generator paradox overseer org-superstar open-junk-file npm-mode nodejs-repl nameless multi-line macrostep lorem-ipsum livid-mode link-hint json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
- '(warning-suppress-types '((lsp-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages
+     '(sql-indent sqlup-mode yaml-mode nginx-mode tern ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-inflection string-edit spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc restart-emacs request rainbow-delimiters quickrun prettier-js popwin pcre2el password-generator paradox overseer org-superstar open-junk-file npm-mode nodejs-repl nameless multi-line macrostep lorem-ipsum livid-mode link-hint json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(warning-suppress-types '((lsp-mode))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
+  )

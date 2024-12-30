@@ -107,6 +107,8 @@ let g:which_key_map_g.y = 'coc-type-definition'
 let g:which_key_map_g.i = 'coc-implementation'
 let g:which_key_map_g.r = 'coc-references'
 let g:which_key_map_g.g = 'goto-top'
+let g:which_key_map_g.k = 'goto-screen-prevline'
+let g:which_key_map_g.j = 'goto-screen-nextline'
 
-call which_key#register('g', "g:which_key_map_g")
-nnoremap <silent> g :<c-u>WhichKey 'g'<CR>
+" call which_key#register('g', "g:which_key_map_g")
+" nnoremap <silent> g :<c-u>WhichKey 'g'<CR>

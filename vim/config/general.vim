@@ -56,6 +56,9 @@ set softtabstop=4
 " config vim updatetime
 set updatetime=250
 
+" config ttimeout after Esc keys
+set ttimeoutlen=50
+
 set t_Co=256
 
 " set  molokai color scheme
