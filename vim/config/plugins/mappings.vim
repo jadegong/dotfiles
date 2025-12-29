@@ -61,7 +61,11 @@ nmap <leader>mma  :CocCommand markdown-preview-enhanced.runAllCodeChunkS<cr>
 
 " Apply AutoFix to problem on the current line.
 " error fix
+nmap <leader>et  <Plug>(coc-config-diagnostic-enable)
 nmap <leader>ef  <Plug>(coc-fix-current)
+nmap <leader>en  <Plug>(coc-diagnostic-next-error)
+nmap <leader>ep  <Plug>(coc-diagnostic-prev-error)
+nmap <leader>el  :CocDiagnostics<cr>
 
 " fold
 nnoremap <silent><leader>zo :Fold<CR>

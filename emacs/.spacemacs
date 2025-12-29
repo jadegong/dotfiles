@@ -56,7 +56,7 @@ This function should only modify configuration layer settings."
                  typescript-indent-level 2)
      ;; vue
      (vue :variables
-          ;; vue-ignore-lsp-diagnostics t
+          vue-ignore-lsp-diagnostics t
           vue-backend 'lsp)
 
      ;; json
@@ -513,7 +513,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
@@ -686,7 +686,42 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(sql-indent sqlup-mode yaml-mode nginx-mode tern ws-butler writeroom-mode winum which-key web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org term-cursor symon symbol-overlay string-inflection string-edit spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline-all-the-icons space-doc restart-emacs request rainbow-delimiters quickrun prettier-js popwin pcre2el password-generator paradox overseer org-superstar open-junk-file npm-mode nodejs-repl nameless multi-line macrostep lorem-ipsum livid-mode link-hint json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide hybrid-mode hungry-delete holy-mode hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+     '(sql-indent sqlup-mode yaml-mode nginx-mode tern ws-butler writeroom-mode winum
+                  which-key web-beautify volatile-highlights vim-powerline
+                  vi-tilde-fringe uuidgen use-package undo-tree
+                  treemacs-projectile treemacs-persp treemacs-icons-dired
+                  treemacs-evil toc-org term-cursor symon symbol-overlay
+                  string-inflection string-edit spacemacs-whitespace-cleanup
+                  spacemacs-purpose-popwin spaceline-all-the-icons space-doc
+                  restart-emacs request rainbow-delimiters quickrun prettier-js
+                  popwin pcre2el password-generator paradox overseer org-superstar
+                  open-junk-file npm-mode nodejs-repl nameless multi-line
+                  macrostep lorem-ipsum livid-mode link-hint json-reformat
+                  json-navigator json-mode js2-refactor js-doc inspector info+
+                  indent-guide hybrid-mode hungry-delete holy-mode hl-todo
+                  highlight-parentheses highlight-numbers highlight-indentation
+                  hide-comnt help-fns+ helm-xref helm-themes helm-swoop
+                  helm-purpose helm-projectile helm-org helm-mode-manager
+                  helm-make helm-flx helm-descbinds helm-ag google-translate
+                  golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido
+                  fancy-battery eyebrowse expand-region evil-visualstar
+                  evil-visual-mark-mode evil-unimpaired evil-tutor
+                  evil-textobj-line evil-surround evil-numbers evil-nerd-commenter
+                  evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus
+                  evil-iedit-state evil-goggles evil-exchange evil-evilified-state
+                  evil-escape evil-ediff evil-easymotion evil-collection
+                  evil-cleverparens evil-args evil-anzu eval-sexp-fu emr
+                  elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff
+                  dotenv-mode dired-quick-sort diminish devdocs define-word
+                  column-enforce-mode clean-aindent-mode centered-cursor-mode
+                  auto-highlight-symbol auto-compile aggressive-indent ace-link
+                  ace-jump-helm-line))
+   '(safe-local-variable-directories
+     '("/datad/programs/git/cisdi/cisdi-cloud/"
+       "/datad/programs/git/cisdi/security-jeecg/ant-design-vue-jeecg/"
+       "/datad/programs/git/cisdi/cisdiims/web-app/"
+       "/datad/programs/git/cisdi/cisdi-control/"
+       "/datad/programs/git/cisdi/cisdiihsm-web/"))
    '(warning-suppress-types '((lsp-mode))))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.

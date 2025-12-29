@@ -1,5 +1,5 @@
 " coc configurations
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-markdown-preview-enhanced', 'coc-webview', 'coc-snippets', 'coc-vetur', 'coc-vimlsp', 'coc-go', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-snippets', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-markdown-preview-enhanced', 'coc-webview', 'coc-snippets', '@yaegassy/coc-volar', 'coc-vimlsp', 'coc-go', 'coc-rust-analyzer', 'coc-pyright', 'coc-clangd', 'coc-cmake']
 " Set updatetime not so long (default to 4000ms) 
 set updatetime=1000
 " jsonc file

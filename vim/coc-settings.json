@@ -1,14 +1,35 @@
 {
   "coc.preferences.maxFileSize": "1GB",
-    "languageserver": {
-        "go": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod"],
-            "filetypes": ["go"]
-        },
-        "vue": {
-            "command": "vls",
-            "filetypes": ["vue"]
-        }
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    },
+    "vue": {
+      "command": "vls",
+      "filetypes": ["vue"]
     }
+  },
+  "clangd.enabled": true,
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.arguments": [
+    "--compile-commands-dir=build",
+    "--compile_args_from=filesystem",
+    "--all-scopes-completion",
+    "--background-index",
+    "--clang-tidy",
+    "--completion-parse=auto",
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+    "--header-insertion-decorators",
+    "--query-driver=/usr/bin/clang-*,/usr/bin/g++*",
+    "--header-insertion=never",
+    "--limit-results=100",
+    "-j=6",
+    "--pch-storage=memory",
+  ],
+  "snippets.textmateSnippetsRoots": ["/home/jade/.config/snippets"],
+  "cmake.cmakePath": "/usr/bin/cmake",
+  "cmake.formatter": "/usr/bin/cmake-format"
 }
