@@ -81,13 +81,13 @@ set hlsearch
 " format code
 :nnoremap <leader>m= :vsc Edit.FormatDocument<CR>
 :vnoremap <leader>m= :vsc Edit.FormatSelection<CR>
-" :nnoremap <leader>mr :vsc Edit.RefactorRename<CR>
-" :vnoremap <leader>mr :vsc Edit.Refactor.Rename<CR>
+:nnoremap <leader>mr :vsc Refactor.Rename<CR>
+:vnoremap <leader>mr :vsc Refactor.Rename<CR>
 
 " find in files
 :nnoremap <leader>ss :vsc Edit.FindInFiles<CR>
 :nnoremap <leader>sr :vsc Edit.ReplaceInFiles<CR>
 " comment
-:nnoremap <leader>m/ :vsc Edit.CommentSelection<CR>
-:vnoremap <leader>m/ :vsc Edit.CommentSelection<CR>
+:nnoremap <leader>m/ :vsc Edit.ToggleLineComment<CR>
+:vnoremap <leader>m/ :vsc Edit.ToggleBlockComment<CR>
 :nnoremap <leader>mf :vsc Edit.FindAllReferences<CR>
