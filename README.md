@@ -4,6 +4,7 @@ Linux 开发环境配置文件
 - ~/.zshrc -> zsh 配置文件. 只改变了theme选项, 增加 zsh-autosuggestions zsh-syntax-highlighting 插件(需要git clone至 ~/.oh-my-zsh/plugins);增加fzf,yarn,nvm相关环境变量配置;
 ## vim
 - ~/.(g)vimrc -> Linux (g)vim 配置文件(我主要开发前端，配置react和vue相关开发环境);
+- ~/.vsvimrc -> visual studio 插件 vsvim 配置文件;
   使用vim8.2版本，新版本会出现兼容性问题，自定义按键启发源至 Spacemacs 按键配置,比如窗口类以 <leader>w(indow)快捷键开头，文件类以 <leader>f(ile)快捷键开头，搜索类以 <leader>s(earch)快捷键开头，根本不用花时间记忆，完全是按照单词首字母来设定;
 
   使用 [vim-plug](https://github.com/junegunn/vim-plug) 管理插件；
@@ -40,6 +41,14 @@ Linux 开发环境配置文件
   |  +-- mappings.vim: 所有自定义快捷键配置文件；
 
   +-- coc-settings.json: 存放 [coc.nvim](https://github.com/neoclide/coc.nvim) 的配置；
+## alacritty (Terminal)
+  - alacritty/alacritty.toml -> alacritty 配置文件，默认位置：~/.config/alacritty/alacritty.toml (需要自行下载~/.config/alacritty/themes);
+
+## rofi (launcher)
+  - rofi/config.rasi -> rofi 配置文件，默认位置：~/.config/rofi/config.rasi (需要自行下载~/.config/rofi/themes);
+
+## tmux
+  - tmux.conf -> tmux 配置文件，位置：~/.tmux.conf;
 
 ## i3wm
 - config -> [i3wm](https://i3wm.org/) 配置文件，使用 font awesome icon-font; 需要特别注意自启动程序相关配置;(我的配置放在 ~/.config/i3/config)

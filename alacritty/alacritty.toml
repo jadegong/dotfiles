@@ -1,0 +1,42 @@
+[general]
+# 设置改变配置自动启动 [window]的需要重启
+live_config_reload = true
+import = [
+    "~/.config/alacritty/themes/themes/tokyo_night_storm.toml"
+]
+
+# 改变窗口设置
+[window]
+# 窗口大小
+dimensions = { columns = 150, lines = 70 }
+padding = { x = 4, y = 2 }
+dynamic_padding = true
+# 透明度
+opacity = 1.0
+# 窗口名字
+title = "Alacritty"
+
+# 字体
+[font]
+normal = { family = "SauceCodePro Nerd Font Mono", style = "Regular" }
+bold = { family = "SauceCodePro Nerd Font Mono", style = "Bold" }
+italic = { family = "SauceCodePro Nerd Font Mono", style = "Italic" }
+size = 10.0
+
+# 鼠标
+[mouse]
+hide_when_typing = true
+bindings = [
+    { mouse = "Left", mods = "Control", action = "Open" },
+    { mouse = "Right", action = "Copy" },
+    { mouse = "Middle", action = "Paste" },
+]
+
+# 光标
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[terminal]
+# 设定复制黏贴行为 默认只能复制
+osc52 = "CopyPaste"
+
