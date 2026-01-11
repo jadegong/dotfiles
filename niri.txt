@@ -1,6 +1,6 @@
 1. waybar
 	auto start: spawn-at-startup "waybar"
-	
+	theme: https://github.com/catppuccin/waybar, config and style
 2. swaylock-effects 
 	config file: ~/.config/swaylock/config
 	binds Mod+Alt+L swaylock
@@ -17,3 +17,4 @@
 6. awww waypaper
 	auto start: awww-daemon
 	waypaper gui: open floating
+
