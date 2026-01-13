@@ -1,0 +1,20 @@
+1. waybar
+	auto start: spawn-at-startup "waybar"
+	theme: https://github.com/catppuccin/waybar, config and style
+2. swaylock-effects 
+	config file: ~/.config/swaylock/config
+	binds Mod+Alt+L swaylock
+3. libnotify mako 
+	config file: ~/.config/mako/config
+	auto start: 
+4. cliphist: 
+	auto start: spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+	with fuzzel img: binds Mod+Shift+V spawn "/path/to/cliphist-fuzzel-img" # this is a shell by cliphist
+
+5. xdg-desktop-portal-gnome, pipewire pavucontrol
+	auto start: systemctl --user enable pipewire pipewire-pulse wireplumber
+	auto start: spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "&" "/usr/lib/xdg-desktop-portal-gnome"
+6. awww waypaper
+	auto start: awww-daemon
+	waypaper gui: open floating
+
