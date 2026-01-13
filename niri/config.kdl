@@ -80,7 +80,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "DP-3" {
-    mode "3840x2160@60.000"
+    mode "3840x2160@59.98"
     scale 1
     position x=0  y=0
 }
@@ -113,6 +113,11 @@ output "DP-3" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=0 y=0
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -161,6 +166,7 @@ layout {
     //
     // Alternatively, you can override it with a window rule called
     // `draw-border-with-background`.
+    background-color "transparent"
 
     // You can change how the focus ring looks.
     focus-ring {
@@ -206,7 +212,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         off
 
-        width 4
+        width 1
         active-color "#ffc87f"
         inactive-color "#505050"
 
@@ -271,6 +277,11 @@ layout {
     }
 }
 
+overview {
+    workspace-shadow{
+    }
+}
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -306,7 +317,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    off
+    // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
@@ -322,16 +333,31 @@ window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    // match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id=r#"^org\.pulseaudio\.pavucontrol$"# title="^Volume Control$"
+    match app-id=r#"^xdg-desktop-portal-gtk$"# title="^Open Files$"
+    match app-id=r#"^xdg-desktop-portal-gtk$"# title="^All Files$"
+    match app-id=r#"^blueman-manager$"#
+    default-column-width {
+      proportion 0.33333
+    }
+    default-window-height {
+      proportion 0.4
+    }
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    // Open the Firefox picture-in-picture player as floating by default.
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    // Open the thunar rename float by default.
+    match app-id=r#"thunar$"# title=r#"^Rename"#
+    // Open the Clash verge float by default.
+    match app-id=r#"Clash-verge$"#
+    match app-id=r#"pavucontrol$"# title="^Volume Control$"
+    match app-id=r#"^blueman-manager$"#
     open-floating true
 }
 // Open the chrome maximize by default.
@@ -377,9 +403,11 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    // Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    // Super+Alt+L hotkey-overlay-title="Lock the Screen: Swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -408,6 +436,7 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
     Mod+Shift+V repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+    // Mod+Shift+V repeat=false { spawn "/home/jade/.config/niri/scripts/cliphist-fuzzel-img"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
@@ -623,6 +652,7 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
+    Mod+Alt+X { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
@@ -644,5 +674,15 @@ binds {
     // moving the mouse or pressing any other key.
     // Mod+Shift+P { power-off-monitors; }
 }
+// auto start noctalia shell
 spawn-at-startup "qs" "-c" "noctalia-shell"
+// pop out when authentication required
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+// auto start timer to power off monitors
+spawn-at-startup "/home/jade/.config/niri/scripts/swayidle.sh"
+// spawn-at-startup "waybar"
+// spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+// spawn-at-startup "swaybg" "--image" "/home/jade/Pictures/background.png" "--mode" "fill"
+// spawn-at-startup "mako"
+// spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "&" "/usr/lib/xdg-desktop-portal-gnome"
 include "./noctalia.kdl"

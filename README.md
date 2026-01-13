@@ -1,8 +1,10 @@
 # dotfiles
 Linux 开发环境配置文件
-## zsh
+## zsh (migrated to fish)
 - ~/.zshrc -> zsh 配置文件. 只改变了theme选项, 增加 zsh-autosuggestions zsh-syntax-highlighting 插件(需要git clone至 ~/.oh-my-zsh/plugins);增加fzf,yarn,nvm相关环境变量配置;
-## vim
+## fish
+- ~/.config/fish -> fish 配置文件目录;
+## vim (migrated to neovim)
 - ~/.(g)vimrc -> Linux (g)vim 配置文件(我主要开发前端，配置react和vue相关开发环境);
 - ~/.vsvimrc -> visual studio 插件 vsvim 配置文件;
   使用vim8.2版本，新版本会出现兼容性问题，自定义按键启发源至 Spacemacs 按键配置,比如窗口类以 <leader>w(indow)快捷键开头，文件类以 <leader>f(ile)快捷键开头，搜索类以 <leader>s(earch)快捷键开头，根本不用花时间记忆，完全是按照单词首字母来设定;
@@ -41,8 +43,14 @@ Linux 开发环境配置文件
   |  +-- mappings.vim: 所有自定义快捷键配置文件；
 
   +-- coc-settings.json: 存放 [coc.nvim](https://github.com/neoclide/coc.nvim) 的配置；
-## alacritty (Terminal)
+## neovim (lazyvim)
+- ~/.config/nvim
+
+## alacritty (Terminal, migrated to kitty)
   - alacritty/alacritty.toml -> alacritty 配置文件，默认位置：~/.config/alacritty/alacritty.toml (需要自行下载~/.config/alacritty/themes);
+
+## kitty (Terminal that can show image)
+  - kitty -> kitty 配置文件目录: ~/.config/kitty;
 
 ## rofi (launcher)
   - rofi/config.rasi -> rofi 配置文件，默认位置：~/.config/rofi/config.rasi (需要自行下载~/.config/rofi/themes);
@@ -60,6 +68,6 @@ Linux 开发环境配置文件
 ## samba
 - samba -> 包含samba共享配置，需要手动创建自己的smb账号密码；
 
-![](https://raw.githubusercontent.com/jadegong/dotfiles/master/2020-12-18-095830_1920x1200_scrot.png)
+![](https://raw.githubusercontent.com/jadegong/dotfiles/master/screenshot-20260113.png)
 ![](https://raw.githubusercontent.com/jadegong/dotfiles/master/emacs_Screenshot_2022-08-13_17-22-33.png)
 ![](https://raw.githubusercontent.com/jadegong/dotfiles/master/Screenshot_2022-09-08_gvim.png)
