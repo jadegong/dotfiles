@@ -2,7 +2,7 @@ return {
   {
     "snacks.nvim",
     opts = {
-      notifier = { enabled = false },
+      notifier = { enabled = true },
     },
   },
 }

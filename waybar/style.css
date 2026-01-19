@@ -1,0 +1,120 @@
+@import './macchiato.css';
+* {
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #1e1e2e;
+  color: @text;
+  margin: 0;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  background-color: @surface0;
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.3rem 0.3rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#cpu,
+#memory,
+#temperature,
+#disk,
+#custom-media,
+#pulseaudio,
+#network,
+#keyboard-state,
+#clock,
+#tray {
+  background-color: @surface0;
+  padding: 0.3rem 1rem 0.2rem;
+  border-radius: 0.1rem;
+}
+
+#cpu {
+  color: #f4ffb8;
+}
+
+#cpu.warning {
+  color: #ffc53d;
+}
+
+#cpu.critical {
+  color: #ff4d4f;
+}
+
+#memory {
+  color: #b5f5ec;
+}
+
+#memory.warning {
+  color: #faad14;
+}
+
+#memory.critical {
+  color: #f5222d;
+}
+
+#temperature {
+  color: #d9f7be;
+}
+
+#temperature.warning {
+  color: #d48806;
+}
+
+#temperature.critical {
+  color: #cf1322;
+}
+
+#disk {
+  color: #f6ffed;
+}
+
+#disk.warning {
+  color: #ffc53d;
+}
+
+#disk.critical {
+  color: #ff4d4f;
+}
+
+#custom-media {
+  color: #d3adf7;
+}
+
+#pulseaudio {
+  color: #fff0f6;
+}
+
+#network {
+  color: #e6fffb;
+}
+
+#keyboard-state {
+  color: #e6f4ff;
+}
+
+#clock {
+  color: #bae0ff;
+}
+
+#tray {
+}

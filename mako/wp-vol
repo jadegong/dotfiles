@@ -1,0 +1,111 @@
+#!/bin/sh
+
+iDIR="$HOME/.config/mako/icons"
+
+# Get the volume level and convert it to a percentage
+get_volume() {
+  volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+  volume=$(echo "$volume" | awk '{print $2}')
+  volume=$(echo "( $volume * 100 ) / 1" | bc)
+  echo "$volume"
+}
+
+# Get icons
+get_icon() {
+	current=$(get_volume)
+  if [[ "$current" -eq "0" ]]; then
+		echo "$iDIR/volume-mute.png"
+	elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
+		echo "$iDIR/volume-low.png"
+	elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
+		echo "$iDIR/volume-mid.png"
+	elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
+		echo "$iDIR/volume-high.png"
+	fi
+}
+
+notify_user() {
+  volume=$(get_volume)
+  notify-send -t 1000 -a 'wp-vol' -i "$(get_icon)" -h string:x-canonical-private-synchronous:volume -h int:value:$volume "Volume: ${volume}%"
+}
+
+# Increase Volume
+inc_volume() {
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0 && notify_user
+}
+
+# Decrease Volume
+dec_volume() {
+  wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && notify_user
+}
+
+# Toggle mute
+toggle_mute() {
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && notify_user
+}
+
+# Get mic volume
+get_mic_volume() {
+  volume=$(wpctl get-volume @DEFAULT_AUDIO_SSOURCE@)
+  volume=$(echo "$volume" | awk '{print $2}')
+  volume=$(echo "( $volume * 100 ) / 1" | bc)
+  echo "$volume"
+}
+
+# Get mic icons
+get_mic_icon() {
+  current=$(get_mic_volume)
+  if [[ "$current" -eq "0" ]]; then
+		echo "$iDIR/microphone-mute.png"
+	elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
+		echo "$iDIR/microphone.png"
+	elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
+		echo "$iDIR/microphone.png"
+	elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
+		echo "$iDIR/microphone.png"
+	fi
+}
+
+# Notify mic
+notify_mic_user() {
+  volume=$(get_volume)
+  notify-send -t 1000 -a 'wp-vol' -i "$(get_mic_icon)" -h string:x-canonical-private-synchronous:volume -h int:value:$volume "Volume: ${volume}%"
+}
+
+# Increase mic volume
+inc_mic_volume() {
+  notify_mic_user
+}
+
+# Decrease mic volume
+dec_mic_volume() {
+  notify_mic_user
+}
+
+# Toggle Mic
+toggle_mic() {
+  wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && notify_mic_user
+}
+
+# Execute accordingly
+if [[ "$1" == "--get" ]]; then
+	get_volume
+elif [[ "$1" == "--inc" ]]; then
+	inc_volume
+elif [[ "$1" == "--dec" ]]; then
+	dec_volume
+elif [[ "$1" == "--toggle" ]]; then
+	toggle_mute
+elif [[ "$1" == "--toggle-mic" ]]; then
+	toggle_mic
+elif [[ "$1" == "--get-icon" ]]; then
+	get_icon
+elif [[ "$1" == "--get-mic-icon" ]]; then
+	get_mic_icon
+elif [[ "$1" == "--inc-mic" ]]; then
+	inc_mic_volume
+elif [[ "$1" == "--dec-mic" ]]; then
+	dec_mic_volume
+else
+	get_volume
+fi
