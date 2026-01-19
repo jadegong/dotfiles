@@ -37,6 +37,7 @@ neovim 配置，使用lazyvim
 ## waybar
 用于屏幕下方或者上方的bar工具
   - \~/.config/waybar -> waybar 配置文件;
+  - 监控大小写需要将当前用户加入input用户组：``sudo usermod -a -G input $(whoami)``
 
 ## ~vim (migrated to neovim)~
 - \~/.(g)vimrc -> Linux (g)vim 配置文件(我主要开发前端，配置react和vue相关开发环境);
