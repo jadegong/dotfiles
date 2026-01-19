@@ -1,17 +1,18 @@
 # dotfiles
 Linux 开发环境配置文件
+
 ## fish
 - \~/.config/fish -> fish 配置文件目录;
 ## fuzzel
 应用启动器
 - \~/.config/fuzzel -> fuzzel 配置文件目录;
-## i3wm (migrated to niri(wayland))
+## ~i3wm (migrated to niri(wayland))~
 - config -> [i3wm](https://i3wm.org/) 配置文件，使用 font awesome icon-font; 需要特别注意自启动程序相关配置;(我的配置放在 \~/.config/i3/config)
 - blurlock -> i3lock 工具锁屏，按键 Mod+l(我弃用了这个功能，快捷键功能被i3wm光标向右窗口移动所占用); 使用命令 ``dm-tool lock`` 来锁屏.
 - .i3status.conf/.i3block.conf -> i3status/i3blocks 配置文件.(放置在 \~/.config/i3/) 现在我用 py3status 代替了.
 - py3status.conf -> py3status 配置文件，用于屏幕下方或者上方的status_bar配置，展示系统相关信息，及窗口序号；
 
-## kitty (Terminal that can show image)
+## ~kitty (Terminal that can show image)~
   - kitty -> kitty 配置文件目录: \~/.config/kitty;
 
 ## mako (Notification daemon)
@@ -37,7 +38,7 @@ neovim 配置，使用lazyvim
 用于屏幕下方或者上方的bar工具
   - \~/.config/waybar -> waybar 配置文件;
 
-## vim (migrated to neovim)
+## ~vim (migrated to neovim)~
 - \~/.(g)vimrc -> Linux (g)vim 配置文件(我主要开发前端，配置react和vue相关开发环境);
 - \~/.vsvimrc -> visual studio 插件 vsvim 配置文件;
   使用vim8.2版本，新版本会出现兼容性问题，自定义按键启发源至 Spacemacs 按键配置,比如窗口类以 <leader>w(indow)快捷键开头，文件类以 <leader>f(ile)快捷键开头，搜索类以 <leader>s(earch)快捷键开头，根本不用花时间记忆，完全是按照单词首字母来设定;
@@ -76,7 +77,7 @@ neovim 配置，使用lazyvim
   |  +-- mappings.vim: 所有自定义快捷键配置文件；
 
   +-- coc-settings.json: 存放 [coc.nvim](https://github.com/neoclide/coc.nvim) 的配置；
-## alacritty (Terminal, migrated to kitty)
+## ~alacritty (Terminal, migrated to kitty)~
   - alacritty/alacritty.toml -> alacritty 配置文件，默认位置：\~/.config/alacritty/alacritty.toml (需要自行下载\~/.config/alacritty/themes);
 
 ## tmux
@@ -86,7 +87,7 @@ neovim 配置，使用lazyvim
 - emacs -> 包含所有emacs配置，我使用了现有配置[Spacemacs](https://www.spacemacs.org)，keyfreq是自定义的一个layer，放在 ``~/.emacs.d/layers/+tools/``目录下，用于统计按键频率，方便对工作流进行优化改造；
 ## samba
 - samba -> 包含samba共享配置，需要手动创建自己的smb账号密码；
-## zsh (migrated to fish)
+## ~zsh (migrated to fish)~
 - \~/.zshrc -> zsh 配置文件. 只改变了theme选项, 增加 zsh-autosuggestions zsh-syntax-highlighting 插件(需要git clone至 \~/.oh-my-zsh/plugins);增加fzf,yarn,nvm相关环境变量配置;
 
 
