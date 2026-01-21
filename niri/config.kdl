@@ -6,10 +6,21 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
+environment {
+  XMODIFIERS "@im=fcitx"
+  QT_IM_MODULES "wayland;fcitx"
+  QT_QPA_PLATFORMTHEME "gtk3"
+}
 prefer-no-csd
+cursor {
+  xcursor-theme "Dracula-cursors"
+  xcursor-size 24
+  hide-when-typing
+}
 gestures {
   hot-corners {
     off
+    // top-left
   }
 }
 input {
@@ -85,9 +96,15 @@ input {
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "DP-3" {
-    mode "3840x2160@59.98"
+    mode "3840x2160@165.000"
     scale 1
-    position x=0  y=0
+    position x=2560  y=0
+    focus-at-startup
+}
+output "DP-2" {
+  mode "2560x1440@165.000"
+  scale 1
+  position x=0 y=0
 }
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
@@ -121,7 +138,7 @@ output "DP-3" {
 }
 
 layer-rule {
-    match namespace="^wallpaper$"
+    match namespace="^wallpaper*"
     place-within-backdrop true
 }
 
@@ -187,7 +204,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#40a02b"
 
         // Color of the ring on inactive monitors.
         //
@@ -339,10 +356,11 @@ window-rule {
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
     // match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id=r#"^blueman-manager$"#
     match app-id=r#"^org\.pulseaudio\.pavucontrol$"# title="^Volume Control$"
     match app-id=r#"^xdg-desktop-portal-gtk$"# title="^Open Files$"
     match app-id=r#"^xdg-desktop-portal-gtk$"# title="^All Files$"
-    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"# title="^新建或选择*"
     default-column-width {
       proportion 0.33333
     }
@@ -363,7 +381,9 @@ window-rule {
     match app-id=r#"Clash-verge$"#
     match app-id=r#"pavucontrol$"# title="^Volume Control$"
     match app-id=r#"^blueman-manager$"#
-    match app-id=r#"^flameshot$"# title="Save screenshot"
+    match app-id=r#"^org\.gnome\.Nautilus$"# title="^新建或选择*"
+    match app-id="steam"
+    exclude app-id="steam" title="^Steam$"
     open-floating true
 }
 // Open the chrome maximize by default.
@@ -391,16 +411,6 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
-
-// workspace 1 {}
-// workspace 2 {}
-// workspace 3 {}
-// workspace 4 {}
-// workspace 5 {}
-// workspace 6 {}
-// workspace 7 {}
-// workspace 8 {}
-// workspace 9 {}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -434,9 +444,9 @@ binds {
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
     // "-l 1.0" limits the volume to 100%.
-    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0 && /home/jade/.config/mako/wp-vol"; }
-    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && /home/jade/.config/mako/wp-vol"; }
-    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && /home/jade/.config/mako/wp-vol"; }
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "/home/jade/.config/mako/wp-vol --inc"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "/home/jade/.config/mako/wp-vol --dec"; }
@@ -500,14 +510,14 @@ binds {
     Mod+Shift+End  { move-column-to-last; }
     Mod+Shift+E  { move-column-to-last; }
 
-    // Mod+Shift+Left  { focus-monitor-left; }
-    // Mod+Shift+Down  { focus-monitor-down; }
-    // Mod+Shift+Up    { focus-monitor-up; }
-    // Mod+Shift+Right { focus-monitor-right; }
-    // Mod+Shift+H     { focus-monitor-left; }
-    // Mod+Shift+J     { focus-monitor-down; }
-    // Mod+Shift+K     { focus-monitor-up; }
-    // Mod+Shift+L     { focus-monitor-right; }
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { focus-monitor-down; }
+    Mod+Ctrl+Up    { focus-monitor-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+J     { focus-monitor-down; }
+    Mod+Ctrl+K     { focus-monitor-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
 
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
@@ -673,6 +683,7 @@ binds {
 
     Print { screenshot; }
     Mod+Alt+X { screenshot; }
+    Mod+Ctrl+Alt+X { screenshot-screen; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
@@ -702,7 +713,8 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "/home/jade/.config/niri/scripts/swayidle.sh"
 spawn-at-startup "waybar"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-spawn-at-startup "swaybg" "--image" "/home/jade/Pictures/1311862.jpeg" "--mode" "fill"
+spawn-at-startup "swaybg" "--image" "/home/jade/Pictures/background.png" "--mode" "fill"
 spawn-at-startup "mako"
-spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "&" "/usr/lib/xdg-desktop-portal-gnome"
+spawn-at-startup "fcitx5"
+// spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "&" "/usr/lib/xdg-desktop-portal-gnome"
 include "./noctalia.kdl"
