@@ -14,11 +14,12 @@ function fish_user_key_bindings
 end
 
 # alias
-alias pacman='sudo pacman'
+# alias pacman='sudo pacman'
 alias la='eza -abghHlS --git --icons'
 alias emacsnw='emacs -nw'
 alias rg='rg -. -g "!{node_modules,.git,.log,.idea,.vscode,.sass-cache}"'
 alias g="git"
+alias clear="printf '\033[H\033[2J'"
 
 # nvm settings, exec once, then comment
 # set -U nvm_data $HOME/.nvm
@@ -38,7 +39,7 @@ else
     if test -f "/home/jade/miniconda3/etc/fish/conf.d/conda.fish"
         . "/home/jade/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH /home/jade/miniconda3/bin $PATH
+        set -x PATH $PATH /home/jade/miniconda3/bin
     end
 end
 # <<< conda initialize <<<
