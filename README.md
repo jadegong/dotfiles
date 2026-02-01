@@ -12,7 +12,7 @@ Linux 开发环境配置文件
 - .i3status.conf/.i3block.conf -> i3status/i3blocks 配置文件.(放置在 \~/.config/i3/) 现在我用 py3status 代替了.
 - py3status.conf -> py3status 配置文件，用于屏幕下方或者上方的status_bar配置，展示系统相关信息，及窗口序号；
 
-## ~kitty (Terminal that can show image)~
+## kitty (Terminal that can show image)
   - kitty -> kitty 配置文件目录: \~/.config/kitty;
 
 ## mako (Notification daemon)
@@ -21,14 +21,19 @@ Linux 开发环境配置文件
   - \~/.config/mako/wp-vol -> 声音和mic调节脚本(使用wpctl);
 
 ## niri (wm use wayland)
-- \~/.config/niri -> niri 配置目录;
-- \~/.config/niri/scripts -> niri 所需脚本(cliphist-fuzzel-img: 支持图片的剪切板历史脚本，swayidle.sh: 自动熄屏脚本);
+  - \~/.config/niri -> niri 配置目录;
+  - \~/.config/niri/scripts -> niri 所需脚本(cliphist-fuzzel-img: 支持图片的剪切板历史脚本，swayidle.sh: 自动熄屏脚本);
+**niri 有个重大的bug，显卡内存泄漏(![#3295](https://github.com/YaLTeR/niri/issues/3295))，似乎是上游smithay的问题(![#1562](https://github.com/Smithay/smithay/issues/1562))。目前两个仓库作者均末作出回应。**
+
+## hyprland (tiling wm use wayland)
+  - \~/.config/hypr -> hyprland 配置文件目录;
+  - \~/.config/hypr/scripts -> hyprland 所需脚本(cliphist-fuzzel-img: 支持图片的剪切板历史脚本，swayidle.sh: 自动熄屏脚本);
 
 ## neovim
 neovim 配置，使用lazyvim
-- \~/.config/nvim
+  - \~/.config/nvim
 
-## rofi (launcher, migrated to fuzzel)
+## ~rofi (launcher, migrated to fuzzel)~
   - rofi/config.rasi -> rofi 配置文件，默认位置：\~/.config/rofi/config.rasi (需要自行下载\~/.config/rofi/themes);
 
 ## swaylock (锁屏工具)
@@ -95,3 +100,4 @@ neovim 配置，使用lazyvim
 ![](https://raw.githubusercontent.com/jadegong/dotfiles/master/screenshot-20260113.png)
 ![](https://raw.githubusercontent.com/jadegong/dotfiles/master/emacs_Screenshot_2022-08-13_17-22-33.png)
 ![](https://raw.githubusercontent.com/jadegong/dotfiles/master/Screenshot_2022-09-08_gvim.png)
+![](https://raw.githubusercontent.com/jadegong/dotfiles/master/2026-02-01_18:02:39_grim.png)
