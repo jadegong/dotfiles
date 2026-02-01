@@ -19,7 +19,8 @@
     ],
     "modules-center": [
         // "sway/window"
-        "niri/workspaces",
+        // "niri/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-right": [
         // "mpd",
@@ -50,6 +51,10 @@
     //         "focused": "",
     //         "default": ""
     //     }
+    },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{id}"
     },
     "keyboard-state": {
         "numlock": false,
@@ -112,12 +117,12 @@
         // }
     },
     "clock": {
-        "interval": 20,
+        "interval": 10,
         "timezone": "Asia/Shanghai",
-        "format": "{:%F %H:%M}  ",
+        "format": "{:%F %H:%M} ",
         // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // "format-alt": "{:%Y-%m-%d}"
-        "tooltip-format": "\n<span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>",
+        "tooltip-format": "<tt><span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span></tt>",
         "calendar": {
             "mode"          : "month",
             "mode-mon-col"  : 3,
@@ -140,7 +145,8 @@
         }
     },
     "cpu": {
-        "format": "  {usage}%",
+        "interval": 5,
+        "format": "{usage}% ",
         "tooltip": false,
         "states": {
           "warning": 75,
@@ -148,8 +154,8 @@
         }
     },
     "memory": {
-        "interval": 15,
-        "format": "  {used:0.1f}G/{total:0.1f}G",
+        "interval": 5,
+        "format": "{used:0.1f}G/{total:0.1f}G ",
         "states": {
           "warning": 75,
           "critical": 90
@@ -157,26 +163,27 @@
     },
     "temperature": {
         // "thermal-zone": 2,
+        "interval": 5,
         "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
         "warning-threshold": 75,
         "critical-threshold": 90,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon} {temperatureC}°C",
+        "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
     "disk#root": {
-        "interval": 15,
+        "interval": 10,
         "path": "/",
-        "format": "  / {free}/{total}",
+        "format": "/ {free}/{total} ",
         "states": {
             "warning": 70,
             "critical": 90
         }
     },
     "disk#datad": {
-        "interval": 15,
+        "interval": 10,
         "path": "/datad",
-        "format": "  /datad {free}/{total}",
+        "format": "/datad {free}/{total} ",
         "states": {
             "warning": 70,
             "critical": 90
@@ -246,7 +253,7 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "🎜 {}",
+        "format": "🎜 m:{}",
         // "return-type": "json",
         "max-length": 50,
         "escape": true,
