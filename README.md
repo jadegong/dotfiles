@@ -23,7 +23,7 @@ Linux 开发环境配置文件
 ## niri (wm use wayland)
   - \~/.config/niri -> niri 配置目录;
   - \~/.config/niri/scripts -> niri 所需脚本(cliphist-fuzzel-img: 支持图片的剪切板历史脚本，swayidle.sh: 自动熄屏脚本);  
-**niri 有个重大的bug，显卡内存泄漏(![#3295](https://github.com/YaLTeR/niri/issues/3295))，似乎是上游smithay的问题(![#1562](https://github.com/Smithay/smithay/issues/1562))。目前两个仓库作者均末作出回应。**
+**niri 有个重大的bug，显卡内存泄漏([#3295](https://github.com/YaLTeR/niri/issues/3295))，似乎是上游smithay的问题([#1562](https://github.com/Smithay/smithay/issues/1562))。目前两个仓库作者均末作出回应。**
 
 ## hyprland (tiling wm use wayland)
   - \~/.config/hypr -> hyprland 配置文件目录;
