@@ -87,7 +87,7 @@ neovim 配置，使用lazyvim
   - alacritty/alacritty.toml -> alacritty 配置文件，默认位置：\~/.config/alacritty/alacritty.toml (需要自行下载\~/.config/alacritty/themes);
 
 ## tmux
-  - tmux.conf -> tmux 配置文件，位置：\~/.tmux.conf;
+  - \~/.config/tmux/tmux.conf -> tmux 配置文件;
 
 ## emacs
 - emacs -> 包含所有emacs配置，我使用了现有配置[Spacemacs](https://www.spacemacs.org)，keyfreq是自定义的一个layer，放在 ``~/.emacs.d/layers/+tools/``目录下，用于统计按键频率，方便对工作流进行优化改造；
