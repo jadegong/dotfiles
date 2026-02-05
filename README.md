@@ -1,6 +1,10 @@
 # dotfiles
 Linux 开发环境配置文件
 
+## 一些说明
+- 为什么 waybar 位置为 bottom: 浏览器中开了多个标签页，当我用鼠标点击标签页切换时，如果 waybar 在 top 位置，我经常点到bar上，所以对我来说 waybar 在屏幕下方更好，我只需要将鼠标移到大概位置即可点到标签页进行切换; 因为这个原因，我的wm没有gap和border，方便鼠标快速操作;
+- 为什么使用 hyprland: 1) wayland; 2) niri 有个重大的bug(见下方niri模块); 3) 我更需要静态的workspaces;
+
 ## fish
 - \~/.config/fish -> fish 配置文件目录;
 ## foot (A lightweight terminal)
@@ -8,7 +12,7 @@ Linux 开发环境配置文件
 ## fuzzel
 应用启动器
 - \~/.config/fuzzel -> fuzzel 配置文件目录;
-## ~i3wm (migrated to niri(wayland))~
+## ~i3wm (migrated to hyprland(wayland))~
 - config -> [i3wm](https://i3wm.org/) 配置文件，使用 font awesome icon-font; 需要特别注意自启动程序相关配置;(我的配置放在 \~/.config/i3/config)
 - blurlock -> i3lock 工具锁屏，按键 Mod+l(我弃用了这个功能，快捷键功能被i3wm光标向右窗口移动所占用); 使用命令 ``dm-tool lock`` 来锁屏.
 - .i3status.conf/.i3block.conf -> i3status/i3blocks 配置文件.(放置在 \~/.config/i3/) 现在我用 py3status 代替了.
@@ -22,7 +26,7 @@ Linux 开发环境配置文件
   - \~/.config/mako/icons -> mako 配置所需图标资源;
   - \~/.config/mako/wp-vol -> 声音和mic调节脚本(使用wpctl);
 
-## niri (wm use wayland)
+## ~niri (wm use wayland)~
   - \~/.config/niri -> niri 配置目录;
   - \~/.config/niri/scripts -> niri 所需脚本(cliphist-fuzzel-img: 支持图片的剪切板历史脚本，swayidle.sh: 自动熄屏脚本);  
 **niri 有个重大的bug，显卡内存泄漏([#3295](https://github.com/YaLTeR/niri/issues/3295))，似乎是上游smithay的问题([#1562](https://github.com/Smithay/smithay/issues/1562))。目前两个仓库作者均末作出回应。**
