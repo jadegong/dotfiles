@@ -3,6 +3,8 @@ Linux 开发环境配置文件
 
 ## fish
 - \~/.config/fish -> fish 配置文件目录;
+## foot (A lightweight terminal)
+- \~/.config/foot -> foot 配置文件目录;
 ## fuzzel
 应用启动器
 - \~/.config/fuzzel -> fuzzel 配置文件目录;
