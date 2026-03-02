@@ -3,7 +3,7 @@ Linux 开发环境配置文件
 
 ## 一些说明
 - 为什么 waybar 位置为 bottom: 浏览器中开了多个标签页，当我用鼠标点击标签页切换时，如果 waybar 在 top 位置，我经常点到bar上，所以对我来说 waybar 在屏幕下方更好，我只需要将鼠标移到大概位置即可点到标签页进行切换; 因为这个原因，我的wm没有gap和border，方便鼠标快速操作;
-- 为什么使用 hyprland: 1) wayland; 2) niri 有个重大的bug(见下方niri模块); 3) 我更需要静态的workspaces;
+- 为什么使用 hyprland: 1) wayland; 2) niri 有个重大的bug(见下方niri模块); 3) 我更需要静态排序的workspaces; 4) 最新的hyprland已经增加了scrolling布局;
 
 ## fish
 - \~/.config/fish -> fish 配置文件目录;
