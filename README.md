@@ -3,7 +3,7 @@ Linux 开发环境配置文件
 
 ## 一些说明
 - 为什么 waybar 位置为 bottom: 浏览器中开了多个标签页，当我用鼠标点击标签页切换时，如果 waybar 在 top 位置，我经常点到bar上，所以对我来说 waybar 在屏幕下方更好，我只需要将鼠标移到大概位置即可点到标签页进行切换; 因为这个原因，我的wm没有gap和border，方便鼠标快速操作;
-- 为什么使用 hyprland: 1) wayland; 2) niri 有个重大的bug(见下方niri模块); 3) 我更需要静态的workspaces;
+- 为什么使用 hyprland: 1) wayland; 2) niri 有个重大的bug(见下方niri模块); 3) 我更需要静态排序的workspaces; 4) 最新的hyprland已经增加了scrolling布局;
 
 ## fish
 - \~/.config/fish -> fish 配置文件目录;
@@ -29,7 +29,8 @@ Linux 开发环境配置文件
 ## ~niri (wm use wayland)~
   - \~/.config/niri -> niri 配置目录;
   - \~/.config/niri/scripts -> niri 所需脚本(cliphist-fuzzel-img: 支持图片的剪切板历史脚本，swayidle.sh: 自动熄屏脚本);  
-**niri 有个重大的bug，显卡内存泄漏([#3295](https://github.com/YaLTeR/niri/issues/3295))，似乎是上游smithay的问题([#1562](https://github.com/Smithay/smithay/issues/1562))。目前两个仓库作者均末作出回应。**
+**niri 有个重大的bug，显卡内存泄漏([#3295](https://github.com/YaLTeR/niri/issues/3295))，似乎是上游smithay的问题([#1562](https://github.com/Smithay/smithay/issues/1562))。目前niri似乎合并了修复pr([Fix dead surface hook
+#3404](https://github.com/niri-wm/niri/pull/3404))，还未发布正式版本，但仍旧有用户反馈问题未解决([#3295#issuecomment-3881504142](https://github.com/niri-wm/niri/issues/3295#issuecomment-3881504142))。**
 
 ## hyprland (tiling wm use wayland)
   - \~/.config/hypr -> hyprland 配置文件目录;
