@@ -1,6 +1,6 @@
 @import './macchiato.css';
 * {
-  font-family: FantasqueSansMono Nerd Font;
+  font-family: FantasqueSansMono Nerd Font Propo;
   font-size: 14px;
   min-height: 0;
 }
@@ -15,6 +15,7 @@ window#waybar {
   border-radius: 1rem;
   background-color: @surface0;
   margin-left: 1rem;
+  min-width: 20rem;
 }
 
 #workspaces button {
@@ -44,12 +45,13 @@ window#waybar {
 #clock,
 #tray {
   background-color: @surface0;
-  padding: 0.3rem 1rem 0.2rem;
+  padding: 0.2rem 1rem 0.2rem;
   border-radius: 0.1rem;
 }
 
 #cpu {
   color: #f4ffb8;
+  min-width: 50px;
 }
 
 #cpu.warning {
@@ -62,6 +64,7 @@ window#waybar {
 
 #memory {
   color: #b5f5ec;
+  min-width: 120px;
 }
 
 #memory.warning {
@@ -74,6 +77,7 @@ window#waybar {
 
 #temperature {
   color: #d9f7be;
+  min-width: 50px;
 }
 
 #temperature.warning {
@@ -86,6 +90,7 @@ window#waybar {
 
 #disk {
   color: #f6ffed;
+  min-width: 130px;
 }
 
 #disk.warning {
@@ -98,6 +103,7 @@ window#waybar {
 
 #custom-media {
   color: #d3adf7;
+  font-size: 12px;
 }
 
 #pulseaudio {
