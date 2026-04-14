@@ -14,8 +14,7 @@ window#waybar {
 #workspaces {
   border-radius: 1rem;
   background-color: @surface0;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin-left: 1rem;
   min-width: 20rem;
 }
 
@@ -40,6 +39,7 @@ window#waybar {
 #temperature,
 #disk,
 #custom-media,
+#idle_inhibitor,
 #pulseaudio,
 #network,
 #keyboard-state,
@@ -105,6 +105,11 @@ window#waybar {
 #custom-media {
   color: #d3adf7;
   font-size: 12px;
+}
+
+#idle_inhibitor {
+  color: #f6ffed;
+  min-width: 24px;
 }
 
 #pulseaudio {
