@@ -33,7 +33,7 @@ hl.bind(
 	)
 )
 hl.bind("SUPER + SHIFT + ALT + X", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
-hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("dm-tool lock"))
+hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("/home/jade/.config/hypr/scripts/cliphist-fuzzel-img"))
 
 -- Move focus
