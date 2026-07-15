@@ -72,6 +72,15 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "floating-windows-calculator",
+	match = {
+		class = "org.gnome.Calculator",
+	},
+	float = true,
+	-- size = {1920, 1080}
+})
+
+hl.window_rule({
 	name = "floating-windows-xdg",
 	match = {
 		class = "xdg-desktop-portal-gtk",
