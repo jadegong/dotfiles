@@ -17,6 +17,13 @@ hl.window_rule({
 
 hl.window_rule({ match = { class = "^((vivaldi-stable)|(google-chrome))$" }, border_size = 0 })
 
+-- Noctalia Settings
+hl.window_rule({
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+	size = { 1080, 920 },
+})
+
 hl.window_rule({
 	name = "floating-windows-volumectrl",
 	match = {

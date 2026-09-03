@@ -2,30 +2,35 @@
 --- KEYBINDINGS ---
 -------------------
 
+local ipc = "noctalia msg "
+
 -- See https://wiki.hypr.land/Configuring/Keywords/
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(Terminal))
 hl.bind("SUPER + Q", hl.dsp.window.close(), { description = "Window: Close" })
 hl.bind("SUPER + E", hl.dsp.exec_cmd(FileManager))
 hl.bind("SUPER + Space", hl.dsp.window.float({ action = "toggle" }), { description = "Window: Float/Tile" })
-hl.bind("SUPER + D", hl.dsp.exec_cmd(Menu))
+hl.bind("SUPER + D", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind("SUPER + comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
 hl.bind(
 	"SUPER + SHIFT + F",
 	hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
 	{ description = "Window: Fullscreen" }
 )
 hl.bind("SUPER + F", hl.dsp.layout("colresize 1.0"))
-hl.bind(
-	"SUPER + X",
-	hl.dsp.exec_cmd(
-		"grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%F_%T_grim.png') && notify-send -a grim -i /home/jade/.config/mako/icons/screenshot-icon.png \"Screenshots saved to:\" \"~/Pictures/Screenshots/$(date +'%F_%T_grim.png')\""
-	)
-)
-hl.bind(
-	"SUPER + ALT + X",
-	hl.dsp.exec_cmd(
-		'grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshots/$(date +\'%F_%T_grim.png\') && notify-send -a grim -i /home/jade/.config/mako/icons/screenshot-icon.png "Screenshots saved to:" "~/Pictures/Screenshots/$(date +\'%F_%T_grim.png\')"'
-	)
-)
+-- hl.bind(
+-- 	"SUPER + X",
+-- 	hl.dsp.exec_cmd(
+-- 		"grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%F_%T_grim.png') && notify-send -a grim -i /home/jade/.config/mako/icons/screenshot-icon.png \"Screenshots saved to:\" \"~/Pictures/Screenshots/$(date +'%F_%T_grim.png')\""
+-- 	)
+-- )
+hl.bind("SUPER + X", hl.dsp.exec_cmd(ipc .. "screenshot-fullscreen pick"))
+-- hl.bind(
+-- 	"SUPER + ALT + X",
+-- 	hl.dsp.exec_cmd(
+-- 		'grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshots/$(date +\'%F_%T_grim.png\') && notify-send -a grim -i /home/jade/.config/mako/icons/screenshot-icon.png "Screenshots saved to:" "~/Pictures/Screenshots/$(date +\'%F_%T_grim.png\')"'
+-- 	)
+-- )
+hl.bind("SUPER + ALT + X", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
 hl.bind(
 	"SUPER + SHIFT + X",
 	hl.dsp.exec_cmd(
@@ -33,8 +38,10 @@ hl.bind(
 	)
 )
 hl.bind("SUPER + SHIFT + ALT + X", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
-hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("/home/jade/.config/hypr/scripts/cliphist-fuzzel-img"))
+-- hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd(ipc .. "session lock"))
+-- hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("/home/jade/.config/hypr/scripts/cliphist-fuzzel-img"))
+hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
 
 -- Move focus
 hl.bind("SUPER + Left", hl.dsp.layout("focus left"))
@@ -113,14 +120,26 @@ hl.bind("SUPER + Equal", hl.dsp.layout("colresize +conf"))
 hl.bind("SUPER + Minus", hl.dsp.layout("colresize -conf"))
 
 -- multimedia keys
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --inc"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --dec"))
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --toggle"))
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --toggle-mic"))
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"))
+-- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --inc"))
+-- hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --dec"))
+-- hl.bind("XF86AudioMute", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --toggle"))
+-- hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("/home/jade/.config/mako/wp-vol --toggle-mic"))
+-- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"))
+-- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"))
+-- -- Requires playerctl
+-- hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+-- hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+-- hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
+-- hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-up"))
 -- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd(ipc .. "media next"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(ipc .. "media previous"))
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd(ipc .. "media pause"))
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd(ipc .. "media play"))
