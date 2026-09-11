@@ -30,14 +30,15 @@ hl.bind("SUPER + X", hl.dsp.exec_cmd(ipc .. "screenshot-fullscreen pick"))
 -- 		'grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshots/$(date +\'%F_%T_grim.png\') && notify-send -a grim -i /home/jade/.config/mako/icons/screenshot-icon.png "Screenshots saved to:" "~/Pictures/Screenshots/$(date +\'%F_%T_grim.png\')"'
 -- 	)
 -- )
-hl.bind("SUPER + ALT + X", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
+hl.bind("SUPER + ALT + X", hl.dsp.exec_cmd(ipc .. "annotate"))
 hl.bind(
 	"SUPER + SHIFT + X",
 	hl.dsp.exec_cmd(
 		"hyprctl -j activewindow | jq -r '\"\\(.at[0]),\\(.at[1]) \\(.size[0])x\\(.size[1])\"' | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'%F_%T_grim.png') && notify-send -a grim -i /home/jade/.config/mako/icons/screenshot-icon.png \"Screenshots saved to:\" \"~/Pictures/Screenshots/$(date +'%F_%T_grim.png')\""
 	)
 )
-hl.bind("SUPER + SHIFT + ALT + X", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
+-- hl.bind("SUPER + SHIFT + ALT + X", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
+hl.bind("SUPER + SHIFT + ALT + X", hl.dsp.exec_cmd(ipc .. "screenshot-annotate"))
 -- hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd(ipc .. "session lock"))
 -- hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("/home/jade/.config/hypr/scripts/cliphist-fuzzel-img"))
